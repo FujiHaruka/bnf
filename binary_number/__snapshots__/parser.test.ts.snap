@@ -1,0 +1,249 @@
+export const snapshot = {};
+
+snapshot[`parse / success > "0" 1`] = `
+{
+  children: [
+    {
+      children: [
+      ],
+      endAt: 1,
+      startAt: 0,
+      type: "binary-digit",
+    },
+  ],
+  endAt: 1,
+  startAt: 0,
+  type: "binary-number",
+}
+`;
+
+snapshot[`parse / success > "10" 1`] = `
+{
+  children: [
+    {
+      children: [
+      ],
+      endAt: 1,
+      startAt: 0,
+      type: "\$literal",
+    },
+    {
+      children: [
+        {
+          children: [
+          ],
+          endAt: 2,
+          startAt: 1,
+          type: "binary-digit",
+        },
+      ],
+      endAt: 2,
+      startAt: 1,
+      type: "binary-sequence",
+    },
+  ],
+  endAt: 2,
+  startAt: 0,
+  type: "binary-number",
+}
+`;
+
+snapshot[`parse / success > "1" 1`] = `
+{
+  children: [
+    {
+      children: [
+      ],
+      endAt: 1,
+      startAt: 0,
+      type: "binary-digit",
+    },
+  ],
+  endAt: 1,
+  startAt: 0,
+  type: "binary-number",
+}
+`;
+
+snapshot[`parse / success > "11" 1`] = `
+{
+  children: [
+    {
+      children: [
+      ],
+      endAt: 1,
+      startAt: 0,
+      type: "\$literal",
+    },
+    {
+      children: [
+        {
+          children: [
+          ],
+          endAt: 2,
+          startAt: 1,
+          type: "binary-digit",
+        },
+      ],
+      endAt: 2,
+      startAt: 1,
+      type: "binary-sequence",
+    },
+  ],
+  endAt: 2,
+  startAt: 0,
+  type: "binary-number",
+}
+`;
+
+snapshot[`parse / success > "100" 1`] = `
+{
+  children: [
+    {
+      children: [
+      ],
+      endAt: 1,
+      startAt: 0,
+      type: "\$literal",
+    },
+    {
+      children: [
+        {
+          children: [
+          ],
+          endAt: 2,
+          startAt: 1,
+          type: "binary-digit",
+        },
+        {
+          children: [
+          ],
+          endAt: 3,
+          startAt: 2,
+          type: "binary-digit",
+        },
+      ],
+      endAt: 3,
+      startAt: 1,
+      type: "binary-sequence",
+    },
+  ],
+  endAt: 2,
+  startAt: 0,
+  type: "binary-number",
+}
+`;
+
+snapshot[`parse / success > "101" 1`] = `
+{
+  children: [
+    {
+      children: [
+      ],
+      endAt: 1,
+      startAt: 0,
+      type: "\$literal",
+    },
+    {
+      children: [
+        {
+          children: [
+          ],
+          endAt: 2,
+          startAt: 1,
+          type: "binary-digit",
+        },
+        {
+          children: [
+          ],
+          endAt: 3,
+          startAt: 2,
+          type: "binary-digit",
+        },
+      ],
+      endAt: 3,
+      startAt: 1,
+      type: "binary-sequence",
+    },
+  ],
+  endAt: 2,
+  startAt: 0,
+  type: "binary-number",
+}
+`;
+
+snapshot[`parse / success > "110" 1`] = `
+{
+  children: [
+    {
+      children: [
+      ],
+      endAt: 1,
+      startAt: 0,
+      type: "\$literal",
+    },
+    {
+      children: [
+        {
+          children: [
+          ],
+          endAt: 2,
+          startAt: 1,
+          type: "binary-digit",
+        },
+        {
+          children: [
+          ],
+          endAt: 3,
+          startAt: 2,
+          type: "binary-digit",
+        },
+      ],
+      endAt: 3,
+      startAt: 1,
+      type: "binary-sequence",
+    },
+  ],
+  endAt: 2,
+  startAt: 0,
+  type: "binary-number",
+}
+`;
+
+snapshot[`parse / success > "111" 1`] = `
+{
+  children: [
+    {
+      children: [
+      ],
+      endAt: 1,
+      startAt: 0,
+      type: "\$literal",
+    },
+    {
+      children: [
+        {
+          children: [
+          ],
+          endAt: 2,
+          startAt: 1,
+          type: "binary-digit",
+        },
+        {
+          children: [
+          ],
+          endAt: 3,
+          startAt: 2,
+          type: "binary-digit",
+        },
+      ],
+      endAt: 3,
+      startAt: 1,
+      type: "binary-sequence",
+    },
+  ],
+  endAt: 2,
+  startAt: 0,
+  type: "binary-number",
+}
+`;

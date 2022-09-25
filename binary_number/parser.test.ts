@@ -1,7 +1,12 @@
+import { assertSnapshot } from "../deps-test.ts";
 import { parse } from "./parser.ts";
 
+function toJsonObject(obj: unknown) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
 Deno.test("parse / success", async (t) => {
-  const tests = [
+  const tests: string[] = [
     "0",
     "1",
     "10",
@@ -13,9 +18,8 @@ Deno.test("parse / success", async (t) => {
   ];
 
   for (const test of tests) {
-    await t.step(test, () => {
-      // TODO:
-      console.log(JSON.stringify(parse(test), null, 2));
+    await t.step(`"${test}"`, async (t) => {
+      await assertSnapshot(t, toJsonObject(parse(test)));
     });
   }
 });

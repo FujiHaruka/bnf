@@ -22,6 +22,13 @@ export class TokenNode {
   }
 }
 
+export interface TokenNodeJson {
+  type: string;
+  children: TokenNodeJson[];
+  startAt: number;
+  endAt: number;
+}
+
 export class FatalError extends Error {}
 
 export class ScanContext {
