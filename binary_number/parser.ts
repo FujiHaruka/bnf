@@ -1,4 +1,4 @@
-import { TokenNode, TokenType, UnexpectedTokenError } from "./core.ts";
+import { LiteralTokeNode, NamedTokeNode, TokenNode, TokenType, UnexpectedTokenError } from "./core.ts";
 
 export const TokenTypes = {
   "binary-number": new TokenType("binary-number"),
@@ -27,7 +27,7 @@ export const Parser = {
   /**
    * `<binary-number> ::= <binary-digit> | "1" <binary-sequence>`
    */
-  "binary-number"(text: string, startAt: number): TokenNode | null {
+  "binary-number"(text: string, startAt: number): NamedTokeNode | null {
     // if it starts with a specific characotr, it can match the latter case.
     if (text.charAt(startAt) === "1") {
       const literal = expect(Parser["$literal"])(text, startAt);
@@ -58,10 +58,10 @@ export const Parser = {
   /**
    * `<binary-sequence> ::= <binary-digit> | <binary-digit> <binary-sequence>`
    */
-  "binary-sequence"(text: string, startAt: number): TokenNode | null {
-    const children: TokenNode[] = [];
+  "binary-sequence"(text: string, startAt: number): NamedTokeNode | null {
+    const children: NamedTokeNode[] = [];
 
-    let node: TokenNode | null = null;
+    let node: NamedTokeNode | null = null;
     let endAt = startAt;
     do {
       node = Parser["binary-digit"](text, endAt);
@@ -86,7 +86,7 @@ export const Parser = {
   /**
    * `<binary-digit> ::= "0" | "1"`
    */
-  "binary-digit"(text: string, startAt: number): TokenNode | null {
+  "binary-digit"(text: string, startAt: number): NamedTokeNode | null {
     switch (text.charAt(startAt)) {
       case "0":
       case "1": {
@@ -103,11 +103,11 @@ export const Parser = {
     }
   },
 
-  "$literal"(_text: string, startAt: number): TokenNode | null {
+  "$literal"(text: string, startAt: number): LiteralTokeNode | null {
     return {
       type: TokenTypes["$literal"],
-      children: [],
-      startAt: startAt,
+      value: text.charAt(startAt),
+      startAt,
       endAt: startAt + 1,
     };
   },
