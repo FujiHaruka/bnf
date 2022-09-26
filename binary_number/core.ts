@@ -1,17 +1,17 @@
 interface BaseTokeNode {
-  type: TokenType
+  type: TokenType;
   startAt: number;
   endAt: number;
 }
 
 export interface LiteralTokeNode extends BaseTokeNode {
-  value: string
+  value: string;
 }
 
 export interface NamedTokeNode extends BaseTokeNode {
   children: TokenNode[];
 }
-export type TokenNode = NamedTokeNode | LiteralTokeNode
+export type TokenNode = NamedTokeNode | LiteralTokeNode;
 
 export interface TokenNodeJson {
   readonlytype: string;

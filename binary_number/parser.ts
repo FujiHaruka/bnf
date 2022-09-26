@@ -1,4 +1,10 @@
-import { LiteralTokeNode, NamedTokeNode, TokenNode, TokenType, UnexpectedTokenError } from "./core.ts";
+import {
+  LiteralTokeNode,
+  NamedTokeNode,
+  TokenNode,
+  TokenType,
+  UnexpectedTokenError,
+} from "./core.ts";
 
 export const TokenTypes = {
   "binary-number": new TokenType("binary-number"),
