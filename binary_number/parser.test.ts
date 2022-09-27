@@ -19,7 +19,6 @@ Deno.test("parse / success", async (t) => {
 
   for (const test of tests) {
     await t.step(`"${test}"`, async (t) => {
-      console.log(JSON.stringify(toJsonObject(parse(test))));
       await assertSnapshot(t, toJsonObject(parse(test)));
     });
   }
