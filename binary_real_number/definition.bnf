@@ -1,6 +1,6 @@
-<binary-number> ::= <binary-integer> | <binary-decimal>
-<binary-decimal> ::= <binary-integer> "." <binary-sequence>
-<binary-integer> ::= "0" | "-" <binary-natural-number> | <binary-natural-number>
+<binary-number>         ::= <binary-integer> | <binary-decimal>
+<binary-decimal>        ::= <binary-integer> "." <binary-sequence>
+<binary-integer>        ::= "0" | "-" <binary-natural-number> | <binary-natural-number>
 <binary-natural-number> ::= <binary-digit> | "1" <binary-sequence>
-<binary-sequence> ::= <binary-digit> | <binary-digit> <binary-sequence>
-<binary-digit> ::= "0" | "1"
+<binary-sequence>       ::= <binary-digit> | <binary-digit> <binary-sequence>
+<binary-digit>          ::= "0" | "1"
