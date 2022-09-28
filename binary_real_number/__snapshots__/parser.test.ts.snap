@@ -1,6 +1,498 @@
 export const snapshot = {};
 
-snapshot[`parse / success > "1.01" 1`] = `
+snapshot[`parse / success "0" 1`] = `
+NamedTokenNode {
+  children: [
+    NamedTokenNode {
+      children: [
+        LiteralTokenNode {
+          type: TokenType {
+            name: "\$literal",
+          },
+          value: "0",
+        },
+      ],
+      endAt: 1,
+      startAt: 0,
+      type: TokenType {
+        name: "binary-integer",
+      },
+    },
+  ],
+  endAt: 1,
+  startAt: 0,
+  type: TokenType {
+    name: "binary-number",
+  },
+}
+`;
+
+snapshot[`parse / success "1" 1`] = `
+NamedTokenNode {
+  children: [
+    NamedTokenNode {
+      children: [
+        NamedTokenNode {
+          children: [
+            NamedTokenNode {
+              children: [
+                LiteralTokenNode {
+                  type: TokenType {
+                    name: "\$literal",
+                  },
+                  value: "1",
+                },
+              ],
+              endAt: 1,
+              startAt: 0,
+              type: TokenType {
+                name: "binary-digit",
+              },
+            },
+          ],
+          endAt: 1,
+          startAt: 0,
+          type: TokenType {
+            name: "binary-number",
+          },
+        },
+      ],
+      endAt: 1,
+      startAt: 0,
+      type: TokenType {
+        name: "binary-integer",
+      },
+    },
+  ],
+  endAt: 1,
+  startAt: 0,
+  type: TokenType {
+    name: "binary-number",
+  },
+}
+`;
+
+snapshot[`parse / success "10" 1`] = `
+NamedTokenNode {
+  children: [
+    NamedTokenNode {
+      children: [
+        NamedTokenNode {
+          children: [
+            LiteralTokenNode {
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: "1",
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "0",
+                    },
+                  ],
+                  endAt: 2,
+                  startAt: 1,
+                  type: TokenType {
+                    name: "binary-digit",
+                  },
+                },
+              ],
+              endAt: 2,
+              startAt: 1,
+              type: TokenType {
+                name: "binary-sequence",
+              },
+            },
+          ],
+          endAt: 2,
+          startAt: 0,
+          type: TokenType {
+            name: "binary-number",
+          },
+        },
+      ],
+      endAt: 2,
+      startAt: 0,
+      type: TokenType {
+        name: "binary-integer",
+      },
+    },
+  ],
+  endAt: 2,
+  startAt: 0,
+  type: TokenType {
+    name: "binary-number",
+  },
+}
+`;
+
+snapshot[`parse / success "11" 1`] = `
+NamedTokenNode {
+  children: [
+    NamedTokenNode {
+      children: [
+        NamedTokenNode {
+          children: [
+            LiteralTokenNode {
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: "1",
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "1",
+                    },
+                  ],
+                  endAt: 2,
+                  startAt: 1,
+                  type: TokenType {
+                    name: "binary-digit",
+                  },
+                },
+              ],
+              endAt: 2,
+              startAt: 1,
+              type: TokenType {
+                name: "binary-sequence",
+              },
+            },
+          ],
+          endAt: 2,
+          startAt: 0,
+          type: TokenType {
+            name: "binary-number",
+          },
+        },
+      ],
+      endAt: 2,
+      startAt: 0,
+      type: TokenType {
+        name: "binary-integer",
+      },
+    },
+  ],
+  endAt: 2,
+  startAt: 0,
+  type: TokenType {
+    name: "binary-number",
+  },
+}
+`;
+
+snapshot[`parse / success "100" 1`] = `
+NamedTokenNode {
+  children: [
+    NamedTokenNode {
+      children: [
+        NamedTokenNode {
+          children: [
+            LiteralTokenNode {
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: "1",
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "0",
+                    },
+                  ],
+                  endAt: 2,
+                  startAt: 1,
+                  type: TokenType {
+                    name: "binary-digit",
+                  },
+                },
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "0",
+                    },
+                  ],
+                  endAt: 3,
+                  startAt: 2,
+                  type: TokenType {
+                    name: "binary-digit",
+                  },
+                },
+              ],
+              endAt: 3,
+              startAt: 1,
+              type: TokenType {
+                name: "binary-sequence",
+              },
+            },
+          ],
+          endAt: 3,
+          startAt: 0,
+          type: TokenType {
+            name: "binary-number",
+          },
+        },
+      ],
+      endAt: 3,
+      startAt: 0,
+      type: TokenType {
+        name: "binary-integer",
+      },
+    },
+  ],
+  endAt: 3,
+  startAt: 0,
+  type: TokenType {
+    name: "binary-number",
+  },
+}
+`;
+
+snapshot[`parse / success "101" 1`] = `
+NamedTokenNode {
+  children: [
+    NamedTokenNode {
+      children: [
+        NamedTokenNode {
+          children: [
+            LiteralTokenNode {
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: "1",
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "0",
+                    },
+                  ],
+                  endAt: 2,
+                  startAt: 1,
+                  type: TokenType {
+                    name: "binary-digit",
+                  },
+                },
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "1",
+                    },
+                  ],
+                  endAt: 3,
+                  startAt: 2,
+                  type: TokenType {
+                    name: "binary-digit",
+                  },
+                },
+              ],
+              endAt: 3,
+              startAt: 1,
+              type: TokenType {
+                name: "binary-sequence",
+              },
+            },
+          ],
+          endAt: 3,
+          startAt: 0,
+          type: TokenType {
+            name: "binary-number",
+          },
+        },
+      ],
+      endAt: 3,
+      startAt: 0,
+      type: TokenType {
+        name: "binary-integer",
+      },
+    },
+  ],
+  endAt: 3,
+  startAt: 0,
+  type: TokenType {
+    name: "binary-number",
+  },
+}
+`;
+
+snapshot[`parse / success "110" 1`] = `
+NamedTokenNode {
+  children: [
+    NamedTokenNode {
+      children: [
+        NamedTokenNode {
+          children: [
+            LiteralTokenNode {
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: "1",
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "1",
+                    },
+                  ],
+                  endAt: 2,
+                  startAt: 1,
+                  type: TokenType {
+                    name: "binary-digit",
+                  },
+                },
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "0",
+                    },
+                  ],
+                  endAt: 3,
+                  startAt: 2,
+                  type: TokenType {
+                    name: "binary-digit",
+                  },
+                },
+              ],
+              endAt: 3,
+              startAt: 1,
+              type: TokenType {
+                name: "binary-sequence",
+              },
+            },
+          ],
+          endAt: 3,
+          startAt: 0,
+          type: TokenType {
+            name: "binary-number",
+          },
+        },
+      ],
+      endAt: 3,
+      startAt: 0,
+      type: TokenType {
+        name: "binary-integer",
+      },
+    },
+  ],
+  endAt: 3,
+  startAt: 0,
+  type: TokenType {
+    name: "binary-number",
+  },
+}
+`;
+
+snapshot[`parse / success "111" 1`] = `
+NamedTokenNode {
+  children: [
+    NamedTokenNode {
+      children: [
+        NamedTokenNode {
+          children: [
+            LiteralTokenNode {
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: "1",
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "1",
+                    },
+                  ],
+                  endAt: 2,
+                  startAt: 1,
+                  type: TokenType {
+                    name: "binary-digit",
+                  },
+                },
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "1",
+                    },
+                  ],
+                  endAt: 3,
+                  startAt: 2,
+                  type: TokenType {
+                    name: "binary-digit",
+                  },
+                },
+              ],
+              endAt: 3,
+              startAt: 1,
+              type: TokenType {
+                name: "binary-sequence",
+              },
+            },
+          ],
+          endAt: 3,
+          startAt: 0,
+          type: TokenType {
+            name: "binary-number",
+          },
+        },
+      ],
+      endAt: 3,
+      startAt: 0,
+      type: TokenType {
+        name: "binary-integer",
+      },
+    },
+  ],
+  endAt: 3,
+  startAt: 0,
+  type: TokenType {
+    name: "binary-number",
+  },
+}
+`;
+
+snapshot[`parse / success "1.01" 1`] = `
 NamedTokenNode {
   children: [
     NamedTokenNode {
@@ -99,7 +591,7 @@ NamedTokenNode {
 }
 `;
 
-snapshot[`parse / success > "1.10" 1`] = `
+snapshot[`parse / success "1.10" 1`] = `
 NamedTokenNode {
   children: [
     NamedTokenNode {
@@ -198,7 +690,85 @@ NamedTokenNode {
 }
 `;
 
-snapshot[`parse / success > "-10.10" 1`] = `
+snapshot[`parse / success "-1" 1`] = `
+NamedTokenNode {
+  children: [
+    NamedTokenNode {
+      children: [
+        LiteralTokenNode {
+          type: TokenType {
+            name: "\$literal",
+          },
+          value: "-",
+        },
+        NamedTokenNode {
+          children: [
+            NamedTokenNode {
+              children: [
+                LiteralTokenNode {
+                  type: TokenType {
+                    name: "\$literal",
+                  },
+                  value: "1",
+                },
+              ],
+              endAt: 2,
+              startAt: 1,
+              type: TokenType {
+                name: "binary-digit",
+              },
+            },
+          ],
+          endAt: 2,
+          startAt: 1,
+          type: TokenType {
+            name: "binary-number",
+          },
+        },
+      ],
+      endAt: 2,
+      startAt: 0,
+      type: TokenType {
+        name: "binary-integer",
+      },
+    },
+  ],
+  endAt: 2,
+  startAt: 0,
+  type: TokenType {
+    name: "binary-number",
+  },
+}
+`;
+
+snapshot[`parse / success "0" 2`] = `
+NamedTokenNode {
+  children: [
+    NamedTokenNode {
+      children: [
+        LiteralTokenNode {
+          type: TokenType {
+            name: "\$literal",
+          },
+          value: "0",
+        },
+      ],
+      endAt: 1,
+      startAt: 0,
+      type: TokenType {
+        name: "binary-integer",
+      },
+    },
+  ],
+  endAt: 1,
+  startAt: 0,
+  type: TokenType {
+    name: "binary-number",
+  },
+}
+`;
+
+snapshot[`parse / success "-10.10" 1`] = `
 NamedTokenNode {
   children: [
     NamedTokenNode {
@@ -210,6 +780,45 @@ NamedTokenNode {
                 name: "\$literal",
               },
               value: "-",
+            },
+            NamedTokenNode {
+              children: [
+                LiteralTokenNode {
+                  type: TokenType {
+                    name: "\$literal",
+                  },
+                  value: "1",
+                },
+                NamedTokenNode {
+                  children: [
+                    NamedTokenNode {
+                      children: [
+                        LiteralTokenNode {
+                          type: TokenType {
+                            name: "\$literal",
+                          },
+                          value: "0",
+                        },
+                      ],
+                      endAt: 3,
+                      startAt: 2,
+                      type: TokenType {
+                        name: "binary-digit",
+                      },
+                    },
+                  ],
+                  endAt: 3,
+                  startAt: 2,
+                  type: TokenType {
+                    name: "binary-sequence",
+                  },
+                },
+              ],
+              endAt: 3,
+              startAt: 1,
+              type: TokenType {
+                name: "binary-number",
+              },
             },
           ],
           endAt: 3,

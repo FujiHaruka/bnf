@@ -6,6 +6,7 @@ import {
   TokenType,
   UnexpectedTokenError,
 } from "./core.ts";
+import { Result } from "./utils/Result.ts";
 
 export type RuleName =
   | "binary-number"
@@ -26,132 +27,103 @@ export const TokenTypes: Readonly<Record<RuleName, TokenType>> = {
   "$literal": new TokenType("$literal"),
 };
 
-type ParserAtom<T extends TokenNode = TokenNode> = (
-  text: string,
-  position: number,
-) => T | null;
-
-function expect<T extends TokenNode>(
-  fn: ParserAtom<T>,
-): (text: string, startAt: number) => T {
-  const fnOrThrow = (text: string, position: number) => {
-    const nodeOrNull = fn(text, position);
-    if (nodeOrNull) {
-      return nodeOrNull;
-    } else {
-      throw new UnexpectedTokenError({
-        char: text.charAt(position),
-        position: position,
-      });
-    }
-  };
-  Object.defineProperty(fnOrThrow, "name", {
-    value: `expect(${fn.name})`,
-    configurable: true,
-  });
-  return fnOrThrow;
-}
-
 export const Parser = {
   /**
    * <binary-number> ::= <binary-integer> | <binary-decimal>
    */
-  "binary-number"(text: string, position: number): NamedTokenNode | null {
+  "binary-number"(text: string, position: number): Result<NamedTokenNode> {
     const candidates = [
       Parser["binary-integer"](text, position),
       Parser["binary-decimal"](text, position),
-    ].filter((node: NamedTokenNode | null): node is NamedTokenNode =>
-      Boolean(node)
-    );
-    const node = longestNode(candidates);
-    if (node) {
-      return new NamedTokenNode({
-        type: TokenTypes["binary-number"],
-        children: [node],
-        startAt: position,
-        endAt: node.endAt,
-      });
-    } else {
-      return null;
-    }
+    ];
+    return longestNode(candidates)
+      .map((node) =>
+        new NamedTokenNode({
+          type: TokenTypes["binary-number"],
+          children: [node],
+          startAt: position,
+          endAt: node.endAt,
+        })
+      );
   },
 
   /**
    * <binary-decimal> ::= <binary-integer> "." <binary-sequence>
    */
-  "binary-decimal"(text: string, position: number): NamedTokenNode | null {
-    const integer = Parser["binary-integer"](text, position) ??
-      Parser["binary-sequence"](text, position);
-    if (integer) {
-      const literal = expect(Parser["$literal"])(text, integer.endAt);
-      if (literal.value !== ".") {
-        throw new UnexpectedTokenError({
-          char: literal.value,
-          position: integer.endAt,
-        });
-      }
-
-      const sequence = expect(Parser["binary-sequence"])(
-        text,
-        integer.endAt + 1,
-      );
-      return new NamedTokenNode({
-        type: TokenTypes["binary-decimal"],
-        children: [integer, literal, sequence],
-        startAt: position,
-        endAt: sequence.endAt,
+  "binary-decimal"(text: string, position: number): Result<NamedTokenNode> {
+    return Parser["binary-integer"](text, position)
+      .andThen((integer) => {
+        return Parser["$literal"](text, integer.endAt)
+          .andThen((literal) => {
+            const ok = [integer, literal] as const;
+            if (literal.value === ".") {
+              return Result.Ok(ok);
+            } else {
+              return Result.Err<typeof ok>(
+                new UnexpectedTokenError({
+                  ruleName: "binary-decimal",
+                  char: literal.value,
+                  position: integer.endAt,
+                }),
+              );
+            }
+          });
+      })
+      .andThen(([integer, literal]) => {
+        return Parser["binary-sequence"](text, integer.endAt + 1)
+          .map((sequence) =>
+            new NamedTokenNode({
+              type: TokenTypes["binary-decimal"],
+              children: [integer, literal, sequence],
+              startAt: position,
+              endAt: sequence.endAt,
+            })
+          );
       });
-    } else {
-      return null;
-    }
   },
 
   /**
    * <binary-integer> ::= "0" | "-" <binary-natural-number> | <binary-natural-number>
    */
-  "binary-integer"(text: string, position: number): NamedTokenNode | null {
+  "binary-integer"(text: string, position: number): Result<NamedTokenNode> {
     const char = text.charAt(position);
     switch (char) {
       case "0": {
-        const literal = new LiteralTokenNode({
-          type: TokenTypes["$literal"],
-          value: char,
-        });
-        return new NamedTokenNode({
-          type: TokenTypes["binary-integer"],
-          children: [literal],
-          startAt: position,
-          endAt: position + 1,
-        });
+        return Parser["$literal"](text, position)
+          .map((literal) =>
+            new NamedTokenNode({
+              type: TokenTypes["binary-integer"],
+              children: [literal],
+              startAt: position,
+              endAt: position + 1,
+            })
+          );
       }
       case "-": {
-        const literal = new LiteralTokenNode({
-          type: TokenTypes["$literal"],
-          value: char,
-        });
-        const node = expect(Parser["binary-natural-number"])(
-          text,
-          position + 1,
-        );
-        return new NamedTokenNode({
-          type: TokenTypes["binary-integer"],
-          children: [literal],
-          startAt: position,
-          endAt: node.endAt,
-        });
+        return Parser["$literal"](text, position)
+          .andThen((literal) => {
+            return Parser["binary-natural-number"](text, position + 1)
+              .map((natural) => [literal, natural] as const);
+          })
+          .map(([literal, natural]) =>
+            new NamedTokenNode({
+              type: TokenTypes["binary-integer"],
+              children: [literal, natural],
+              startAt: position,
+              endAt: natural.endAt,
+            })
+          );
       }
       default: {
-        const node = Parser["binary-natural-number"](text, position);
-        if (node) {
-          return new NamedTokenNode({
-            type: TokenTypes["binary-integer"],
-            children: [node],
-            startAt: position,
-            endAt: node.endAt,
-          });
-        } else {
-          return null;
-        }
+        return Parser["binary-natural-number"](text, position)
+          .map((natural) =>
+            new NamedTokenNode({
+              type: TokenTypes["binary-integer"],
+              children: [natural],
+              startAt: position,
+              endAt: natural.endAt,
+            })
+          );
       }
     }
   },
@@ -162,94 +134,132 @@ export const Parser = {
   "binary-natural-number"(
     text: string,
     position: number,
-  ): NamedTokenNode | null {
-    // if it starts with a specific characotr, it can match the latter case.
+  ): Result<NamedTokenNode> {
+    // if it starts with a specific charactor, it can match the latter case.
     if (text.charAt(position) === "1") {
-      const literal = expect(Parser["$literal"])(text, position);
-      const sequence = Parser["binary-sequence"](text, position + 1);
-      if (sequence) {
-        return new NamedTokenNode({
-          type: TokenTypes["binary-number"],
-          children: [literal, sequence],
-          startAt: position,
-          endAt: sequence.endAt,
+      const result = Parser["$literal"](text, position)
+        .andThen((literal) => {
+          return Parser["binary-sequence"](text, position + 1).map((sequence) =>
+            [literal, sequence] as const
+          );
+        })
+        .map(([literal, sequence]) => {
+          const node = new NamedTokenNode({
+            type: TokenTypes["binary-number"],
+            children: [literal, sequence],
+            startAt: position,
+            endAt: sequence.endAt,
+          });
+          return node;
         });
+
+      if (result.isOk()) {
+        return result;
       }
     }
 
-    const digit = Parser["binary-digit"](text, position);
-    if (digit) {
-      return new NamedTokenNode({
-        type: TokenTypes["binary-number"],
-        children: [digit],
-        startAt: position,
-        endAt: digit.endAt,
-      });
-    } else {
-      return null;
-    }
+    return Parser["binary-digit"](text, position)
+      .map((digit) =>
+        new NamedTokenNode({
+          type: TokenTypes["binary-number"],
+          children: [digit],
+          startAt: position,
+          endAt: digit.endAt,
+        })
+      );
   },
 
   /**
    * `<binary-sequence> ::= <binary-digit> | <binary-digit> <binary-sequence>`
    */
-  "binary-sequence"(text: string, position: number): NamedTokenNode | null {
+  "binary-sequence"(text: string, position: number): Result<NamedTokenNode> {
     const children: NamedTokenNode[] = [];
 
-    let node: NamedTokenNode | null = null;
+    let node: Result<NamedTokenNode>;
     let endAt = position;
     do {
       node = Parser["binary-digit"](text, endAt);
-      if (node) {
-        endAt = node.endAt;
-        children.push(node);
+      if (node.isOk()) {
+        const unwrapped = node.unwrap();
+        endAt = unwrapped.endAt;
+        children.push(unwrapped);
       }
-    } while (node);
+    } while (node.isOk());
 
     if (children.length === 0) {
-      return null;
+      return Result.Err(
+        new UnexpectedTokenError({
+          ruleName: "binary-sequence",
+          char: text.charAt(position),
+          position,
+        }),
+      );
     } else {
-      return new NamedTokenNode({
+      const node = new NamedTokenNode({
         type: TokenTypes["binary-sequence"],
         children,
         startAt: position,
         endAt,
       });
+      return Result.Ok(node);
     }
   },
 
   /**
    * `<binary-digit> ::= "0" | "1"`
    */
-  "binary-digit"(text: string, position: number): NamedTokenNode | null {
+  "binary-digit"(text: string, position: number): Result<NamedTokenNode> {
     switch (text.charAt(position)) {
       case "0":
       case "1": {
-        const node = expect(Parser["$literal"])(text, position);
-        return new NamedTokenNode({
-          type: TokenTypes["binary-digit"],
-          children: [node],
-          startAt: position,
-          endAt: position + 1,
-        });
+        return Parser["$literal"](text, position)
+          .map((node) =>
+            new NamedTokenNode({
+              type: TokenTypes["binary-digit"],
+              children: [node],
+              startAt: position,
+              endAt: position + 1,
+            })
+          );
       }
       default:
-        return null;
+        return Result.Err(
+          new UnexpectedTokenError({
+            ruleName: "binary-digit",
+            char: text.charAt(position),
+            position,
+          }),
+        );
     }
   },
 
-  "$literal"(text: string, position: number): LiteralTokenNode | null {
-    return new LiteralTokenNode({
+  "$literal"(text: string, position: number): Result<LiteralTokenNode> {
+    if (text.length <= position) {
+      return Result.Err(new Error("Position overtakes text length"));
+    }
+
+    const node = new LiteralTokenNode({
       type: TokenTypes["$literal"],
       value: text.charAt(position),
     });
+    return Result.Ok(node);
   },
 };
 
+type ParserAtom<T extends TokenNode = TokenNode> = (
+  text: string,
+  position: number,
+) => Result<T>;
+
+// type validation
+// deno-lint-ignore no-unused-vars
+const validation: Record<RuleName, ParserAtom> = Parser;
+
 export function parse(text: string): NamedTokenNode {
-  const node = expect(Parser["binary-number"])(text, 0);
+  const node = Parser["binary-number"](text, 0).unwrap();
   if (node.endAt !== text.length) {
     throw new UnexpectedTokenError({
+      ruleName: "$root",
       char: text.charAt(node.endAt),
       position: node.endAt,
     });

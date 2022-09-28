@@ -1,3 +1,5 @@
+import { Result } from "./utils/Result.ts";
+
 export abstract class BaseTokenNode {
   readonly type: TokenType;
 
@@ -81,8 +83,10 @@ export type TokenNodeJson = LiteralTokenNodeJson | NamedTokenNodeJson;
 export class FatalError extends Error {}
 
 export class UnexpectedTokenError extends Error {
-  constructor(ctx: { char: string; position: number }) {
-    super(`Unexpected token ${ctx.char} at position ${ctx.position}`);
+  constructor(ctx: { ruleName: string; char: string; position: number }) {
+    super(
+      `[${ctx.ruleName}] Unexpected token "${ctx.char}" at position ${ctx.position}`,
+    );
   }
 }
 
@@ -98,8 +102,17 @@ export class TokenType {
   }
 }
 
-export function longestNode(nodes: NamedTokenNode[]): NamedTokenNode | null {
+export function longestNode(
+  nodeResults: Result<NamedTokenNode>[],
+): Result<NamedTokenNode> {
+  const nodes = nodeResults
+    .filter((result) => result.isOk())
+    .map((result) => result.unwrap());
+
   const ends = nodes.map((node) => node.endAt);
   const maxEnd = Math.max(...ends);
-  return nodes.find((node) => node.endAt === maxEnd) ?? null;
+  const longest = nodes.find((node) => node.endAt === maxEnd);
+  return longest
+    ? Result.Ok(longest)
+    : Result.Err(new Error("No longest node"));
 }
