@@ -30,7 +30,7 @@ const testsFailure: string[] = [
   "10a",
 ];
 testsFailure.forEach((text) => {
-  Deno.test(`parse / failure "${text}"`, (t) => {
+  Deno.test(`parse / failure "${text}"`, () => {
     assertThrows(() => parse(text));
   });
 });
