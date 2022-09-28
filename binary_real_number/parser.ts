@@ -4,8 +4,8 @@ import {
   NamedTokenNode,
   TokenNode,
   TokenType,
-  UnexpectedTokenError,
-} from "./core.ts";
+} from "./token.ts";
+import { UnexpectedTokenError } from "./utils/errors.ts";
 import { Result } from "./utils/Result.ts";
 
 export type RuleName =

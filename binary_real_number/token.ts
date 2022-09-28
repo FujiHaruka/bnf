@@ -80,16 +80,6 @@ export interface NamedTokenNodeJson {
 }
 export type TokenNodeJson = LiteralTokenNodeJson | NamedTokenNodeJson;
 
-export class FatalError extends Error {}
-
-export class UnexpectedTokenError extends Error {
-  constructor(ctx: { ruleName: string; char: string; position: number }) {
-    super(
-      `[${ctx.ruleName}] Unexpected token "${ctx.char}" at position ${ctx.position}`,
-    );
-  }
-}
-
 export class TokenType {
   constructor(readonly name: string) {}
 
