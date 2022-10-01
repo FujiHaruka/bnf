@@ -2,13 +2,21 @@ import { Result } from "./utils/Result.ts";
 
 export abstract class BaseTokenNode {
   readonly type: TokenType;
+  readonly startAt: number;
+  readonly endAt: number;
 
   constructor({
     type,
+    startAt,
+    endAt,
   }: {
     type: TokenType;
+    startAt: number;
+    endAt: number;
   }) {
     this.type = type;
+    this.startAt = startAt;
+    this.endAt = endAt;
   }
 }
 
@@ -18,11 +26,15 @@ export class LiteralTokenNode extends BaseTokenNode {
   constructor({
     type,
     value,
+    startAt,
+    endAt,
   }: {
     type: TokenType;
     value: string;
+    startAt: number;
+    endAt: number;
   }) {
-    super({ type });
+    super({ type, startAt, endAt });
     this.value = value;
   }
 
@@ -30,13 +42,13 @@ export class LiteralTokenNode extends BaseTokenNode {
     return {
       type: this.type.toJSON(),
       value: this.value,
+      startAt: this.startAt,
+      endAt: this.endAt,
     };
   }
 }
 
 export class NamedTokenNode extends BaseTokenNode {
-  readonly startAt: number;
-  readonly endAt: number;
   readonly children: TokenNode[];
 
   constructor({
@@ -50,9 +62,7 @@ export class NamedTokenNode extends BaseTokenNode {
     endAt: number;
     children: TokenNode[];
   }) {
-    super({ type });
-    this.startAt = startAt;
-    this.endAt = endAt;
+    super({ type, startAt, endAt });
     this.children = children;
   }
 
@@ -71,6 +81,8 @@ export type TokenNode = NamedTokenNode | LiteralTokenNode;
 export interface LiteralTokenNodeJson {
   type: string;
   value: string;
+  startAt: number;
+  endAt: number;
 }
 export interface NamedTokenNodeJson {
   type: string;
@@ -92,9 +104,12 @@ export class TokenType {
   }
 }
 
-export const LiteralTokenType = new TokenType("$literal")
+export const LiteralTokenType = new TokenType("$literal");
 
-export function parseLiteral(text: string, position: number): Result<LiteralTokenNode> {
+export function parseLiteral(
+  text: string,
+  position: number,
+): Result<LiteralTokenNode> {
   if (text.length <= position) {
     return Result.Err(new Error("Position overtakes text length"));
   }
@@ -102,6 +117,8 @@ export function parseLiteral(text: string, position: number): Result<LiteralToke
   const node = new LiteralTokenNode({
     type: LiteralTokenType,
     value: text.charAt(position),
+    startAt: position,
+    endAt: position + 1,
   });
   return Result.Ok(node);
 }

@@ -1,3 +1,4 @@
+import { concat, createLiteralTokenParser } from "./combinators.ts";
 import {
   longestNode,
   NamedTokenNode,
@@ -14,7 +15,7 @@ export type RuleName =
   | "binary-integer"
   | "binary-natural-number"
   | "binary-sequence"
-  | "binary-digit"
+  | "binary-digit";
 
 export const TokenTypes: Readonly<Record<RuleName, TokenType>> = {
   "binary-number": new TokenType("binary-number"),
@@ -49,35 +50,15 @@ export const Parser = {
    * <binary-decimal> ::= <binary-integer> "." <binary-sequence>
    */
   "binary-decimal"(text: string, position: number): Result<NamedTokenNode> {
-    return Parser["binary-integer"](text, position)
-      .andThen((integer) => {
-        return parseLiteral(text, integer.endAt)
-          .andThen((literal) => {
-            const ok = [integer, literal] as const;
-            if (literal.value === ".") {
-              return Result.Ok(ok);
-            } else {
-              return Result.Err<typeof ok>(
-                new UnexpectedTokenError({
-                  ruleName: "binary-decimal",
-                  char: literal.value,
-                  position: integer.endAt,
-                }),
-              );
-            }
-          });
-      })
-      .andThen(([integer, literal]) => {
-        return Parser["binary-sequence"](text, integer.endAt + 1)
-          .map((sequence) =>
-            new NamedTokenNode({
-              type: TokenTypes["binary-decimal"],
-              children: [integer, literal, sequence],
-              startAt: position,
-              endAt: sequence.endAt,
-            })
-          );
-      });
+    const parse = concat(
+      TokenTypes["binary-decimal"],
+      [
+        Parser["binary-integer"],
+        createLiteralTokenParser("."),
+        Parser["binary-sequence"],
+      ],
+    );
+    return parse(text, position);
   },
 
   /**
@@ -98,19 +79,13 @@ export const Parser = {
           );
       }
       case "-": {
-        return parseLiteral(text, position)
-          .andThen((literal) => {
-            return Parser["binary-natural-number"](text, position + 1)
-              .map((natural) => [literal, natural] as const);
-          })
-          .map(([literal, natural]) =>
-            new NamedTokenNode({
-              type: TokenTypes["binary-integer"],
-              children: [literal, natural],
-              startAt: position,
-              endAt: natural.endAt,
-            })
-          );
+        return concat(
+          TokenTypes["binary-integer"],
+          [
+            createLiteralTokenParser("-"),
+            Parser["binary-natural-number"],
+          ],
+        )(text, position);
       }
       default: {
         return Parser["binary-natural-number"](text, position)
@@ -135,21 +110,13 @@ export const Parser = {
   ): Result<NamedTokenNode> {
     // if it starts with a specific charactor, it can match the latter case.
     if (text.charAt(position) === "1") {
-      const result = parseLiteral(text, position)
-        .andThen((literal) => {
-          return Parser["binary-sequence"](text, position + 1).map((sequence) =>
-            [literal, sequence] as const
-          );
-        })
-        .map(([literal, sequence]) => {
-          const node = new NamedTokenNode({
-            type: TokenTypes["binary-number"],
-            children: [literal, sequence],
-            startAt: position,
-            endAt: sequence.endAt,
-          });
-          return node;
-        });
+      const result = concat(
+        TokenTypes["binary-natural-number"],
+        [
+          createLiteralTokenParser("1"),
+          Parser["binary-sequence"],
+        ],
+      )(text, position);
 
       if (result.isOk()) {
         return result;

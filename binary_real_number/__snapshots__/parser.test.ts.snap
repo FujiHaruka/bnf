@@ -6,6 +6,8 @@ NamedTokenNode {
     NamedTokenNode {
       children: [
         LiteralTokenNode {
+          endAt: 1,
+          startAt: 0,
           type: TokenType {
             name: "\$literal",
           },
@@ -37,6 +39,8 @@ NamedTokenNode {
             NamedTokenNode {
               children: [
                 LiteralTokenNode {
+                  endAt: 1,
+                  startAt: 0,
                   type: TokenType {
                     name: "\$literal",
                   },
@@ -80,6 +84,8 @@ NamedTokenNode {
         NamedTokenNode {
           children: [
             LiteralTokenNode {
+              endAt: 1,
+              startAt: 0,
               type: TokenType {
                 name: "\$literal",
               },
@@ -90,6 +96,8 @@ NamedTokenNode {
                 NamedTokenNode {
                   children: [
                     LiteralTokenNode {
+                      endAt: 2,
+                      startAt: 1,
                       type: TokenType {
                         name: "\$literal",
                       },
@@ -113,7 +121,7 @@ NamedTokenNode {
           endAt: 2,
           startAt: 0,
           type: TokenType {
-            name: "binary-number",
+            name: "binary-natural-number",
           },
         },
       ],
@@ -140,6 +148,8 @@ NamedTokenNode {
         NamedTokenNode {
           children: [
             LiteralTokenNode {
+              endAt: 1,
+              startAt: 0,
               type: TokenType {
                 name: "\$literal",
               },
@@ -150,6 +160,8 @@ NamedTokenNode {
                 NamedTokenNode {
                   children: [
                     LiteralTokenNode {
+                      endAt: 2,
+                      startAt: 1,
                       type: TokenType {
                         name: "\$literal",
                       },
@@ -173,7 +185,7 @@ NamedTokenNode {
           endAt: 2,
           startAt: 0,
           type: TokenType {
-            name: "binary-number",
+            name: "binary-natural-number",
           },
         },
       ],
@@ -200,6 +212,8 @@ NamedTokenNode {
         NamedTokenNode {
           children: [
             LiteralTokenNode {
+              endAt: 1,
+              startAt: 0,
               type: TokenType {
                 name: "\$literal",
               },
@@ -210,6 +224,8 @@ NamedTokenNode {
                 NamedTokenNode {
                   children: [
                     LiteralTokenNode {
+                      endAt: 2,
+                      startAt: 1,
                       type: TokenType {
                         name: "\$literal",
                       },
@@ -225,6 +241,8 @@ NamedTokenNode {
                 NamedTokenNode {
                   children: [
                     LiteralTokenNode {
+                      endAt: 3,
+                      startAt: 2,
                       type: TokenType {
                         name: "\$literal",
                       },
@@ -248,7 +266,7 @@ NamedTokenNode {
           endAt: 3,
           startAt: 0,
           type: TokenType {
-            name: "binary-number",
+            name: "binary-natural-number",
           },
         },
       ],
@@ -275,6 +293,8 @@ NamedTokenNode {
         NamedTokenNode {
           children: [
             LiteralTokenNode {
+              endAt: 1,
+              startAt: 0,
               type: TokenType {
                 name: "\$literal",
               },
@@ -285,6 +305,8 @@ NamedTokenNode {
                 NamedTokenNode {
                   children: [
                     LiteralTokenNode {
+                      endAt: 2,
+                      startAt: 1,
                       type: TokenType {
                         name: "\$literal",
                       },
@@ -300,6 +322,8 @@ NamedTokenNode {
                 NamedTokenNode {
                   children: [
                     LiteralTokenNode {
+                      endAt: 3,
+                      startAt: 2,
                       type: TokenType {
                         name: "\$literal",
                       },
@@ -323,7 +347,7 @@ NamedTokenNode {
           endAt: 3,
           startAt: 0,
           type: TokenType {
-            name: "binary-number",
+            name: "binary-natural-number",
           },
         },
       ],
@@ -350,6 +374,8 @@ NamedTokenNode {
         NamedTokenNode {
           children: [
             LiteralTokenNode {
+              endAt: 1,
+              startAt: 0,
               type: TokenType {
                 name: "\$literal",
               },
@@ -360,6 +386,8 @@ NamedTokenNode {
                 NamedTokenNode {
                   children: [
                     LiteralTokenNode {
+                      endAt: 2,
+                      startAt: 1,
                       type: TokenType {
                         name: "\$literal",
                       },
@@ -375,6 +403,8 @@ NamedTokenNode {
                 NamedTokenNode {
                   children: [
                     LiteralTokenNode {
+                      endAt: 3,
+                      startAt: 2,
                       type: TokenType {
                         name: "\$literal",
                       },
@@ -398,7 +428,7 @@ NamedTokenNode {
           endAt: 3,
           startAt: 0,
           type: TokenType {
-            name: "binary-number",
+            name: "binary-natural-number",
           },
         },
       ],
@@ -425,6 +455,8 @@ NamedTokenNode {
         NamedTokenNode {
           children: [
             LiteralTokenNode {
+              endAt: 1,
+              startAt: 0,
               type: TokenType {
                 name: "\$literal",
               },
@@ -435,6 +467,8 @@ NamedTokenNode {
                 NamedTokenNode {
                   children: [
                     LiteralTokenNode {
+                      endAt: 2,
+                      startAt: 1,
                       type: TokenType {
                         name: "\$literal",
                       },
@@ -450,6 +484,8 @@ NamedTokenNode {
                 NamedTokenNode {
                   children: [
                     LiteralTokenNode {
+                      endAt: 3,
+                      startAt: 2,
                       type: TokenType {
                         name: "\$literal",
                       },
@@ -473,7 +509,7 @@ NamedTokenNode {
           endAt: 3,
           startAt: 0,
           type: TokenType {
-            name: "binary-number",
+            name: "binary-natural-number",
           },
         },
       ],
@@ -504,6 +540,8 @@ NamedTokenNode {
                 NamedTokenNode {
                   children: [
                     LiteralTokenNode {
+                      endAt: 1,
+                      startAt: 0,
                       type: TokenType {
                         name: "\$literal",
                       },
@@ -531,6 +569,8 @@ NamedTokenNode {
           },
         },
         LiteralTokenNode {
+          endAt: 2,
+          startAt: 1,
           type: TokenType {
             name: "\$literal",
           },
@@ -541,6 +581,8 @@ NamedTokenNode {
             NamedTokenNode {
               children: [
                 LiteralTokenNode {
+                  endAt: 3,
+                  startAt: 2,
                   type: TokenType {
                     name: "\$literal",
                   },
@@ -556,6 +598,8 @@ NamedTokenNode {
             NamedTokenNode {
               children: [
                 LiteralTokenNode {
+                  endAt: 4,
+                  startAt: 3,
                   type: TokenType {
                     name: "\$literal",
                   },
@@ -603,6 +647,8 @@ NamedTokenNode {
                 NamedTokenNode {
                   children: [
                     LiteralTokenNode {
+                      endAt: 1,
+                      startAt: 0,
                       type: TokenType {
                         name: "\$literal",
                       },
@@ -630,6 +676,8 @@ NamedTokenNode {
           },
         },
         LiteralTokenNode {
+          endAt: 2,
+          startAt: 1,
           type: TokenType {
             name: "\$literal",
           },
@@ -640,6 +688,8 @@ NamedTokenNode {
             NamedTokenNode {
               children: [
                 LiteralTokenNode {
+                  endAt: 3,
+                  startAt: 2,
                   type: TokenType {
                     name: "\$literal",
                   },
@@ -655,6 +705,8 @@ NamedTokenNode {
             NamedTokenNode {
               children: [
                 LiteralTokenNode {
+                  endAt: 4,
+                  startAt: 3,
                   type: TokenType {
                     name: "\$literal",
                   },
@@ -696,6 +748,8 @@ NamedTokenNode {
     NamedTokenNode {
       children: [
         LiteralTokenNode {
+          endAt: 1,
+          startAt: 0,
           type: TokenType {
             name: "\$literal",
           },
@@ -706,6 +760,8 @@ NamedTokenNode {
             NamedTokenNode {
               children: [
                 LiteralTokenNode {
+                  endAt: 2,
+                  startAt: 1,
                   type: TokenType {
                     name: "\$literal",
                   },
@@ -747,6 +803,8 @@ NamedTokenNode {
     NamedTokenNode {
       children: [
         LiteralTokenNode {
+          endAt: 1,
+          startAt: 0,
           type: TokenType {
             name: "\$literal",
           },
@@ -776,6 +834,8 @@ NamedTokenNode {
         NamedTokenNode {
           children: [
             LiteralTokenNode {
+              endAt: 1,
+              startAt: 0,
               type: TokenType {
                 name: "\$literal",
               },
@@ -784,6 +844,8 @@ NamedTokenNode {
             NamedTokenNode {
               children: [
                 LiteralTokenNode {
+                  endAt: 2,
+                  startAt: 1,
                   type: TokenType {
                     name: "\$literal",
                   },
@@ -794,6 +856,8 @@ NamedTokenNode {
                     NamedTokenNode {
                       children: [
                         LiteralTokenNode {
+                          endAt: 3,
+                          startAt: 2,
                           type: TokenType {
                             name: "\$literal",
                           },
@@ -817,7 +881,7 @@ NamedTokenNode {
               endAt: 3,
               startAt: 1,
               type: TokenType {
-                name: "binary-number",
+                name: "binary-natural-number",
               },
             },
           ],
@@ -828,6 +892,8 @@ NamedTokenNode {
           },
         },
         LiteralTokenNode {
+          endAt: 4,
+          startAt: 3,
           type: TokenType {
             name: "\$literal",
           },
@@ -838,6 +904,8 @@ NamedTokenNode {
             NamedTokenNode {
               children: [
                 LiteralTokenNode {
+                  endAt: 5,
+                  startAt: 4,
                   type: TokenType {
                     name: "\$literal",
                   },
@@ -853,6 +921,8 @@ NamedTokenNode {
             NamedTokenNode {
               children: [
                 LiteralTokenNode {
+                  endAt: 6,
+                  startAt: 5,
                   type: TokenType {
                     name: "\$literal",
                   },
