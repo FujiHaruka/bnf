@@ -1,4 +1,4 @@
-import { concat, createLiteralTokenParser } from "./combinators.ts";
+import { concat, literalTokenParser } from "./combinators.ts";
 import {
   longestNode,
   NamedTokenNode,
@@ -54,7 +54,7 @@ export const Parser = {
       TokenTypes["binary-decimal"],
       [
         Parser["binary-integer"],
-        createLiteralTokenParser("."),
+        literalTokenParser("."),
         Parser["binary-sequence"],
       ],
     );
@@ -82,7 +82,7 @@ export const Parser = {
         return concat(
           TokenTypes["binary-integer"],
           [
-            createLiteralTokenParser("-"),
+            literalTokenParser("-"),
             Parser["binary-natural-number"],
           ],
         )(text, position);
@@ -113,7 +113,7 @@ export const Parser = {
       const result = concat(
         TokenTypes["binary-natural-number"],
         [
-          createLiteralTokenParser("1"),
+          literalTokenParser("1"),
           Parser["binary-sequence"],
         ],
       )(text, position);

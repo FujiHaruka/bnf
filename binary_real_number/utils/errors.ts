@@ -7,3 +7,17 @@ export class UnexpectedTokenError extends Error {
     );
   }
 }
+
+export class EmptyTextError extends Error {
+  constructor() {
+    super("Cannot parse empty text");
+  }
+}
+
+export class PositionExceededError extends Error {
+  constructor(ctx: { ruleName: string; position: number }) {
+    super(
+      `Cursor position exceeds text length. (position: ${ctx.position}, rule: ${ctx.ruleName})`,
+    );
+  }
+}
