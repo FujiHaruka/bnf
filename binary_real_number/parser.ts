@@ -1,7 +1,7 @@
 import {
-  LiteralTokenNode,
   longestNode,
   NamedTokenNode,
+  parseLiteral,
   TokenNode,
   TokenType,
 } from "./token.ts";
@@ -15,7 +15,6 @@ export type RuleName =
   | "binary-natural-number"
   | "binary-sequence"
   | "binary-digit"
-  | "$literal";
 
 export const TokenTypes: Readonly<Record<RuleName, TokenType>> = {
   "binary-number": new TokenType("binary-number"),
@@ -24,7 +23,6 @@ export const TokenTypes: Readonly<Record<RuleName, TokenType>> = {
   "binary-natural-number": new TokenType("binary-natural-number"),
   "binary-sequence": new TokenType("binary-sequence"),
   "binary-digit": new TokenType("binary-digit"),
-  "$literal": new TokenType("$literal"),
 };
 
 export const Parser = {
@@ -53,7 +51,7 @@ export const Parser = {
   "binary-decimal"(text: string, position: number): Result<NamedTokenNode> {
     return Parser["binary-integer"](text, position)
       .andThen((integer) => {
-        return Parser["$literal"](text, integer.endAt)
+        return parseLiteral(text, integer.endAt)
           .andThen((literal) => {
             const ok = [integer, literal] as const;
             if (literal.value === ".") {
@@ -89,7 +87,7 @@ export const Parser = {
     const char = text.charAt(position);
     switch (char) {
       case "0": {
-        return Parser["$literal"](text, position)
+        return parseLiteral(text, position)
           .map((literal) =>
             new NamedTokenNode({
               type: TokenTypes["binary-integer"],
@@ -100,7 +98,7 @@ export const Parser = {
           );
       }
       case "-": {
-        return Parser["$literal"](text, position)
+        return parseLiteral(text, position)
           .andThen((literal) => {
             return Parser["binary-natural-number"](text, position + 1)
               .map((natural) => [literal, natural] as const);
@@ -137,7 +135,7 @@ export const Parser = {
   ): Result<NamedTokenNode> {
     // if it starts with a specific charactor, it can match the latter case.
     if (text.charAt(position) === "1") {
-      const result = Parser["$literal"](text, position)
+      const result = parseLiteral(text, position)
         .andThen((literal) => {
           return Parser["binary-sequence"](text, position + 1).map((sequence) =>
             [literal, sequence] as const
@@ -212,7 +210,7 @@ export const Parser = {
     switch (text.charAt(position)) {
       case "0":
       case "1": {
-        return Parser["$literal"](text, position)
+        return parseLiteral(text, position)
           .map((node) =>
             new NamedTokenNode({
               type: TokenTypes["binary-digit"],
@@ -231,18 +229,6 @@ export const Parser = {
           }),
         );
     }
-  },
-
-  "$literal"(text: string, position: number): Result<LiteralTokenNode> {
-    if (text.length <= position) {
-      return Result.Err(new Error("Position overtakes text length"));
-    }
-
-    const node = new LiteralTokenNode({
-      type: TokenTypes["$literal"],
-      value: text.charAt(position),
-    });
-    return Result.Ok(node);
   },
 };
 

@@ -92,6 +92,20 @@ export class TokenType {
   }
 }
 
+export const LiteralTokenType = new TokenType("$literal")
+
+export function parseLiteral(text: string, position: number): Result<LiteralTokenNode> {
+  if (text.length <= position) {
+    return Result.Err(new Error("Position overtakes text length"));
+  }
+
+  const node = new LiteralTokenNode({
+    type: LiteralTokenType,
+    value: text.charAt(position),
+  });
+  return Result.Ok(node);
+}
+
 export function longestNode(
   nodeResults: Result<NamedTokenNode>[],
 ): Result<NamedTokenNode> {
