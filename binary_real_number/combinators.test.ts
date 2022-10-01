@@ -1,6 +1,12 @@
-import { literalTokenParser } from "./combinators.ts";
-import { assertEquals, describe, it } from "../deps-test.ts";
-import { LiteralTokenNode, LiteralTokenType } from "./token.ts";
+import { concat, literalTokenParser } from "./combinators.ts";
+import {
+  assert,
+  assertEquals,
+  assertIsError,
+  describe,
+  it,
+} from "../deps-test.ts";
+import { LiteralTokenNode, NamedTokenNode, TokenType } from "./token.ts";
 import {
   EmptyTextError,
   PositionExceededError,
@@ -11,11 +17,10 @@ import { assertThrows } from "https://deno.land/std@0.157.0/testing/asserts.ts";
 describe(literalTokenParser.name, () => {
   it("parses successfully", () => {
     const parse = literalTokenParser("#");
-    assertEquals(parse("__#__", 2).isOk(), true);
+    assert(parse("__#__", 2).isOk());
     assertEquals(
       parse("__#__", 2).unwrap(),
       new LiteralTokenNode({
-        type: LiteralTokenType,
         value: "#",
         startAt: 2,
         endAt: 3,
@@ -25,14 +30,10 @@ describe(literalTokenParser.name, () => {
 
   it("fails to parse with unexpected token error", () => {
     const parse = literalTokenParser("#");
-    assertEquals(parse("_____", 2).isErr(), true);
-    assertEquals(
+    assert(parse("_____", 2).isErr());
+    assertIsError(
       parse("_____", 2).unwrapErr(),
-      new UnexpectedTokenError({
-        ruleName: "$literal",
-        char: "_",
-        position: 2,
-      }),
+      UnexpectedTokenError,
     );
   });
 
@@ -43,21 +44,95 @@ describe(literalTokenParser.name, () => {
 
   it("returns error when tries to parse empty text", () => {
     const parse = literalTokenParser("#");
-    assertEquals(parse("", 0).isErr(), true);
-    assertEquals(parse("", 0).unwrapErr(), new EmptyTextError());
+    assert(parse("", 0).isErr());
+    assertIsError(parse("", 0).unwrapErr(), EmptyTextError);
   });
 
   it("returns error when position exceeds text length", () => {
     const parse = literalTokenParser("#");
-    assertEquals(parse("_", 1).isErr(), true);
-    assertEquals(
+    assert(parse("_", 1).isErr());
+    assertIsError(
       parse("_", 1).unwrapErr(),
-      new PositionExceededError({ position: 1, ruleName: "$literal" }),
+      PositionExceededError,
     );
   });
 
   it("throws error with invalid text length given", () => {
     assertThrows(() => literalTokenParser(""));
     assertThrows(() => literalTokenParser("##"));
+  });
+});
+
+describe(concat.name, () => {
+  it("works with 1 literal parser", () => {
+    const tokenType = new TokenType("test");
+    const parse = concat(tokenType, [
+      literalTokenParser("#"),
+    ]);
+
+    assertEquals(parse("#", 0).isOk(), true);
+    assertEquals(
+      parse("#", 0).unwrap(),
+      new NamedTokenNode({
+        type: tokenType,
+        startAt: 0,
+        endAt: 1,
+        children: [
+          new LiteralTokenNode({
+            value: "#",
+            startAt: 0,
+            endAt: 1,
+          }),
+        ],
+      }),
+    );
+
+    assert(parse("_", 0).isErr());
+    assertIsError(parse("_", 0).unwrapErr(), UnexpectedTokenError);
+  });
+
+  it("works with 3 literal parsers", () => {
+    const tokenType = new TokenType("test");
+    const parse = concat(tokenType, [
+      literalTokenParser("0"),
+      literalTokenParser("1"),
+      literalTokenParser("2"),
+    ]);
+
+    assertEquals(parse("_012_", 1).isOk(), true);
+    assertEquals(
+      parse("_012_", 1).unwrap(),
+      new NamedTokenNode({
+        type: tokenType,
+        startAt: 1,
+        endAt: 4,
+        children: [
+          new LiteralTokenNode({
+            value: "0",
+            startAt: 1,
+            endAt: 2,
+          }),
+          new LiteralTokenNode({
+            value: "1",
+            startAt: 2,
+            endAt: 3,
+          }),
+          new LiteralTokenNode({
+            value: "2",
+            startAt: 3,
+            endAt: 4,
+          }),
+        ],
+      }),
+    );
+
+    assertIsError(parse("__", 1).unwrapErr(), UnexpectedTokenError);
+    assertIsError(parse("_0_", 1).unwrapErr(), UnexpectedTokenError);
+    assertIsError(parse("_01_", 1).unwrapErr(), UnexpectedTokenError);
+    assertIsError(parse("_01", 1).unwrapErr(), PositionExceededError);
+  });
+
+  it("throws fatal error when empty array is given", () => {
+    assertThrows(() => concat(new TokenType("dummay"), []));
   });
 });

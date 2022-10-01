@@ -44,7 +44,6 @@ export function literalTokenParser(charactor: string) {
     }
 
     const node = new LiteralTokenNode({
-      type: LiteralTokenType,
       value: text.charAt(position),
       startAt: position,
       endAt: position + 1,
@@ -75,7 +74,7 @@ export function concat(
   parsers: Parser[],
 ): NamedTokenParser {
   if (parsers.length === 0) {
-    new FatalError("parsers must have at least 1 parser");
+    throw new FatalError("parsers to concat must have at least 1 parser");
   }
 
   const parser = (text: string, position: number): Result<NamedTokenNode> => {

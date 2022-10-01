@@ -24,17 +24,15 @@ export class LiteralTokenNode extends BaseTokenNode {
   readonly value: string;
 
   constructor({
-    type,
     value,
     startAt,
     endAt,
   }: {
-    type: TokenType;
     value: string;
     startAt: number;
     endAt: number;
   }) {
-    super({ type, startAt, endAt });
+    super({ type: LiteralTokenType, startAt, endAt });
     this.value = value;
   }
 
@@ -115,7 +113,6 @@ export function parseLiteral(
   }
 
   const node = new LiteralTokenNode({
-    type: LiteralTokenType,
     value: text.charAt(position),
     startAt: position,
     endAt: position + 1,
