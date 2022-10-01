@@ -1,11 +1,5 @@
-import { concat, literalTokenParser } from "./combinators.ts";
-import {
-  longestNode,
-  NamedTokenNode,
-  parseLiteral,
-  TokenNode,
-  TokenType,
-} from "./token.ts";
+import { concat, literalTokenParser, or } from "./combinators.ts";
+import { NamedTokenNode, parseLiteral, TokenNode, TokenType } from "./token.ts";
 import { UnexpectedTokenError } from "./utils/errors.ts";
 import { Result } from "./utils/Result.ts";
 
@@ -31,19 +25,13 @@ export const Parser = {
    * <binary-number> ::= <binary-integer> | <binary-decimal>
    */
   "binary-number"(text: string, position: number): Result<NamedTokenNode> {
-    const candidates = [
-      Parser["binary-integer"](text, position),
-      Parser["binary-decimal"](text, position),
-    ];
-    return longestNode(candidates)
-      .map((node) =>
-        new NamedTokenNode({
-          type: TokenTypes["binary-number"],
-          children: [node],
-          startAt: position,
-          endAt: node.endAt,
-        })
-      );
+    return or(
+      TokenTypes["binary-number"],
+      [
+        Parser["binary-integer"],
+        Parser["binary-decimal"],
+      ],
+    )(text, position);
   },
 
   /**
@@ -174,28 +162,13 @@ export const Parser = {
    * `<binary-digit> ::= "0" | "1"`
    */
   "binary-digit"(text: string, position: number): Result<NamedTokenNode> {
-    switch (text.charAt(position)) {
-      case "0":
-      case "1": {
-        return parseLiteral(text, position)
-          .map((node) =>
-            new NamedTokenNode({
-              type: TokenTypes["binary-digit"],
-              children: [node],
-              startAt: position,
-              endAt: position + 1,
-            })
-          );
-      }
-      default:
-        return Result.Err(
-          new UnexpectedTokenError({
-            ruleName: "binary-digit",
-            char: text.charAt(position),
-            position,
-          }),
-        );
-    }
+    return or(
+      TokenTypes["binary-digit"],
+      [
+        literalTokenParser("0"),
+        literalTokenParser("1"),
+      ],
+    )(text, position);
   },
 };
 

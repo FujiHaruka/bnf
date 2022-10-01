@@ -119,18 +119,3 @@ export function parseLiteral(
   });
   return Result.Ok(node);
 }
-
-export function longestNode(
-  nodeResults: Result<NamedTokenNode>[],
-): Result<NamedTokenNode> {
-  const nodes = nodeResults
-    .filter((result) => result.isOk())
-    .map((result) => result.unwrap());
-
-  const ends = nodes.map((node) => node.endAt);
-  const maxEnd = Math.max(...ends);
-  const longest = nodes.find((node) => node.endAt === maxEnd);
-  return longest
-    ? Result.Ok(longest)
-    : Result.Err(new Error("No longest node"));
-}
