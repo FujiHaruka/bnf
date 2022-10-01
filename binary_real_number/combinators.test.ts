@@ -1,4 +1,4 @@
-import { concat, literalTokenParser } from "./combinators.ts";
+import { concat, literalTokenParser, NamedTokenParser } from "./combinators.ts";
 import {
   assert,
   assertEquals,
@@ -13,6 +13,7 @@ import {
   UnexpectedTokenError,
 } from "./utils/errors.ts";
 import { assertThrows } from "https://deno.land/std@0.157.0/testing/asserts.ts";
+import { Result } from "./utils/Result.ts";
 
 describe(literalTokenParser.name, () => {
   it("parses successfully", () => {
@@ -130,6 +131,83 @@ describe(concat.name, () => {
     assertIsError(parse("_0_", 1).unwrapErr(), UnexpectedTokenError);
     assertIsError(parse("_01_", 1).unwrapErr(), UnexpectedTokenError);
     assertIsError(parse("_01", 1).unwrapErr(), PositionExceededError);
+  });
+
+  it("works with literal parsers and named parsers", () => {
+    const dummyParserType = new TokenType("dummy");
+    const dummyParser: NamedTokenParser = (_text, position) => {
+      return Result.Ok(
+        new NamedTokenNode({
+          type: dummyParserType,
+          children: [],
+          startAt: position,
+          endAt: position + 2,
+        }),
+      );
+    };
+
+    const tokenType = new TokenType("test");
+    const parse = concat(tokenType, [
+      dummyParser,
+      literalTokenParser("0"),
+      dummyParser,
+      literalTokenParser("1"),
+      dummyParser,
+    ]);
+
+    assertEquals(
+      parse("__0__1__", 0).unwrap(),
+      new NamedTokenNode({
+        type: tokenType,
+        startAt: 0,
+        endAt: 8,
+        children: [
+          new NamedTokenNode({
+            type: dummyParserType,
+            children: [],
+            startAt: 0,
+            endAt: 2,
+          }),
+          new LiteralTokenNode({
+            value: "0",
+            startAt: 2,
+            endAt: 3,
+          }),
+          new NamedTokenNode({
+            type: dummyParserType,
+            children: [],
+            startAt: 3,
+            endAt: 5,
+          }),
+          new LiteralTokenNode({
+            value: "1",
+            startAt: 5,
+            endAt: 6,
+          }),
+          new NamedTokenNode({
+            type: dummyParserType,
+            children: [],
+            startAt: 6,
+            endAt: 8,
+          }),
+        ],
+      }),
+    );
+  });
+
+  it("generates parser name", () => {
+    const parse1: NamedTokenParser = () => {
+      // deno-lint-ignore no-explicit-any
+      return null as any;
+    };
+    const parse2: NamedTokenParser = () => {
+      // deno-lint-ignore no-explicit-any
+      return null as any;
+    };
+
+    const tokenType = new TokenType("test");
+    const parse = concat(tokenType, [parse1, parse2]);
+    assertEquals(parse.name, "Concat(parse1, parse2)");
   });
 
   it("throws fatal error when empty array is given", () => {
