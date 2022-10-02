@@ -3,12 +3,7 @@ import { concat } from "./combinators/concat.ts";
 import { flattenRecursiveNodes } from "./combinators/flattenRecursiveNodes.ts";
 import { literalTokenParser } from "./combinators/literalTokenParser.ts";
 import { or } from "./combinators/or.ts";
-import {
-  NamedTokenNode,
-  TempTokenType,
-  TokenNode,
-  TokenType,
-} from "./token.ts";
+import { NamedTokenNode, TempTokenType, TokenType } from "./token.ts";
 import { UnexpectedTokenError } from "./utils/errors.ts";
 import { Result } from "./utils/Result.ts";
 
@@ -117,15 +112,6 @@ export const Parser = {
     )(text, position);
   },
 };
-
-type ParserAtom<T extends TokenNode = TokenNode> = (
-  text: string,
-  position: number,
-) => Result<T>;
-
-// type validation
-// deno-lint-ignore no-unused-vars
-const validation: Record<RuleName, ParserAtom> = Parser;
 
 export function parse(text: string): NamedTokenNode {
   const node = Parser["binary-number"](text, 0)
