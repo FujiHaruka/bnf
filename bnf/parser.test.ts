@@ -55,6 +55,49 @@ describe("Parsers", () => {
         type: "rule-char",
       }],
     }],
+    // <term> ::= <literal> | "<" <rule-name> ">"
+    [Parser["term"], "'A'", {
+      type: "term",
+      startAt: 0,
+      endAt: 3,
+      children: [{
+        type: "literal",
+        children: [{
+          value: "'",
+        }, {
+          type: "text2",
+        }, {
+          value: "'",
+        }],
+      }],
+    }],
+    [Parser["term"], "<ro-ba>", {
+      type: "term",
+      startAt: 0,
+      endAt: 7,
+      children: [{
+        value: "<",
+      }, {
+        type: "rule-name",
+      }, {
+        value: ">",
+      }],
+    }],
+    [Parser["term"], `"'"`, {
+      type: "term",
+      startAt: 0,
+      endAt: 3,
+      children: [{
+        type: "literal",
+        children: [{
+          value: '"',
+        }, {
+          type: "text1",
+        }, {
+          value: '"',
+        }],
+      }],
+    }],
   ];
 
   tests.forEach(([parse, text, expected]) => {
@@ -62,7 +105,7 @@ describe("Parsers", () => {
       const result = parse(text, 0)
         .map(cleanupTempTokenNodes)
         .map(flattenRecursiveNodes);
-      // if (parse.name === "rule-name") {
+      // if (parse.name === "term") {
       //   console.log(JSON.stringify(result.unwrap(), null, 2))
       // }
       assert(result.isOk());

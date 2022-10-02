@@ -157,7 +157,7 @@ export const Parser = {
    * <text1> ::= "" | <character1> <text1>
    */
   "text1"(text: string, position: number): Result<NamedTokenNode> {
-    return or(TokenTypes["text2"], [
+    return or(TokenTypes["text1"], [
       parseEmptyToken,
       concat(TempTokenType, [
         Parser["character1"],
