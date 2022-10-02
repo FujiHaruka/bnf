@@ -1,6 +1,7 @@
 import {
   cleanupTempTokenNodes,
   concat,
+  flattenRecursiveNodes,
   literalTokenParser,
   or,
 } from "./combinators.ts";
@@ -96,36 +97,13 @@ export const Parser = {
    * `<binary-sequence> ::= <binary-digit> | <binary-digit> <binary-sequence>`
    */
   "binary-sequence"(text: string, position: number): Result<NamedTokenNode> {
-    const children: NamedTokenNode[] = [];
-
-    let node: Result<NamedTokenNode>;
-    let endAt = position;
-    do {
-      node = Parser["binary-digit"](text, endAt);
-      if (node.isOk()) {
-        const unwrapped = node.unwrap();
-        endAt = unwrapped.endAt;
-        children.push(unwrapped);
-      }
-    } while (node.isOk());
-
-    if (children.length === 0) {
-      return Result.Err(
-        new UnexpectedTokenError({
-          ruleName: "binary-sequence",
-          char: text.charAt(position),
-          position,
-        }),
-      );
-    } else {
-      const node = new NamedTokenNode({
-        type: TokenTypes["binary-sequence"],
-        children,
-        startAt: position,
-        endAt,
-      });
-      return Result.Ok(node);
-    }
+    return or(TokenTypes["binary-sequence"], [
+      Parser["binary-digit"],
+      concat(TempTokenType, [
+        Parser["binary-digit"],
+        Parser["binary-sequence"],
+      ]),
+    ])(text, position);
   },
 
   /**
@@ -152,8 +130,10 @@ type ParserAtom<T extends TokenNode = TokenNode> = (
 const validation: Record<RuleName, ParserAtom> = Parser;
 
 export function parse(text: string): NamedTokenNode {
-  let node = Parser["binary-number"](text, 0).unwrap();
-  node = cleanupTempTokenNodes(node);
+  const node = Parser["binary-number"](text, 0)
+    .map<NamedTokenNode>(cleanupTempTokenNodes)
+    .map<NamedTokenNode>(flattenRecursiveNodes)
+    .unwrap();
 
   if (node.endAt !== text.length) {
     throw new UnexpectedTokenError({
