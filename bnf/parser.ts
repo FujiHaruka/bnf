@@ -1,8 +1,10 @@
 import { cleanupTempTokenNodes } from "./combinators/cleanupTempTokenNodes.ts";
 import { concat } from "./combinators/concat.ts";
 import { flattenRecursiveNodes } from "./combinators/flattenRecursiveNodes.ts";
+import { leftRecursion } from "./combinators/leftRecursion.ts";
 import { literalTokenParser } from "./combinators/literalTokenParser.ts";
 import { or } from "./combinators/or.ts";
+import { parseEmptyToken } from "./combinators/parseEmptyToken.ts";
 import { NamedTokenNode, TempTokenType, TokenType } from "./token.ts";
 import { UnexpectedTokenError } from "./utils/errors.ts";
 import { Result } from "./utils/Result.ts";
@@ -58,10 +60,7 @@ export const Parser = {
       Parser["rule-name"],
       literalTokenParser(">"),
       Parser["opt-whitespace"],
-      // TODO: how to express "::="?
-      literalTokenParser(":"),
-      literalTokenParser(":"),
-      literalTokenParser("="),
+      literalTokenParser("::="),
       Parser["opt-whitespace"],
       Parser["expression"],
       Parser["line-end"],
@@ -76,12 +75,11 @@ export const Parser = {
         literalTokenParser(" "),
         Parser["opt-whitespace"],
       ]),
-      // TODO: empty string parser?
-      literalTokenParser(""),
+      parseEmptyToken,
     ])(text, position);
   },
   /**
-   * <expression>     ::= <list> | <list> <opt-whitespace> "|" <opt-whitespace> <expression>
+   * <expression> ::= <list> | <list> <opt-whitespace> "|" <opt-whitespace> <expression>
    */
   "expression"(text: string, position: number): Result<NamedTokenNode> {
     return or(TokenTypes["expression"], [
@@ -105,6 +103,7 @@ export const Parser = {
         // TODO: EOL parser
         literalTokenParser("\n"),
       ]),
+      // TODO: is it left recursion?
       concat(TempTokenType, [
         Parser["line-end"],
         Parser["line-end"],
@@ -159,8 +158,11 @@ export const Parser = {
    */
   "text1"(text: string, position: number): Result<NamedTokenNode> {
     return or(TokenTypes["text2"], [
-      Parser["character1"],
-      Parser["text1"],
+      parseEmptyToken,
+      concat(TempTokenType, [
+        Parser["character1"],
+        Parser["text1"],
+      ]),
     ])(text, position);
   },
   /**
@@ -168,8 +170,11 @@ export const Parser = {
    */
   "text2"(text: string, position: number): Result<NamedTokenNode> {
     return or(TokenTypes["text2"], [
-      Parser["character2"],
-      Parser["text2"],
+      parseEmptyToken,
+      concat(TempTokenType, [
+        Parser["character2"],
+        Parser["text2"],
+      ]),
     ])(text, position);
   },
   /**
@@ -188,7 +193,7 @@ export const Parser = {
    */
   "letter"(text: string, position: number): Result<NamedTokenNode> {
     return or(
-      TokenTypes.letter,
+      TokenTypes["letter"],
       [
         "A",
         "B",
@@ -250,7 +255,7 @@ export const Parser = {
    */
   "digit"(text: string, position: number): Result<NamedTokenNode> {
     return or(
-      TokenTypes.letter,
+      TokenTypes["digit"],
       [
         "0",
         "1",
@@ -270,7 +275,7 @@ export const Parser = {
    */
   "symbol"(text: string, position: number): Result<NamedTokenNode> {
     return or(
-      TokenTypes.letter,
+      TokenTypes["symbol"],
       [
         "|",
         " ",
@@ -328,13 +333,10 @@ export const Parser = {
    * <rule-name> ::= <letter> | <rule-name> <rule-char>
    */
   "rule-name"(text: string, position: number): Result<NamedTokenNode> {
-    return or(TokenTypes["rule-name"], [
-      Parser["letter"],
-      concat(TempTokenType, [
-        Parser["rule-name"],
-        Parser["rule-char"],
-      ]),
-    ])(text, position);
+    return leftRecursion(TokenTypes["rule-name"], {
+      base: Parser["letter"],
+      tail: Parser["rule-char"],
+    })(text, position);
   },
   /**
    * <rule-char> ::= <letter> | <digit> | "-"
