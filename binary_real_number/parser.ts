@@ -1,10 +1,8 @@
-import {
-  cleanupTempTokenNodes,
-  concat,
-  flattenRecursiveNodes,
-  literalTokenParser,
-  or,
-} from "./combinators.ts";
+import { cleanupTempTokenNodes } from "./combinators/cleanupTempTokenNodes.ts";
+import { concat } from "./combinators/concat.ts";
+import { flattenRecursiveNodes } from "./combinators/flattenRecursiveNodes.ts";
+import { literalTokenParser } from "./combinators/literalTokenParser.ts";
+import { or } from "./combinators/or.ts";
 import {
   NamedTokenNode,
   TempTokenType,
