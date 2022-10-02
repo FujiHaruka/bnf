@@ -28,6 +28,19 @@ describe(literalTokenParser.name, () => {
     );
   });
 
+  it("parses successfully when value with more than 1 length", () => {
+    const parse = literalTokenParser("#$%");
+    assert(parse("__#$%__", 2).isOk());
+    assertEquals(
+      parse("__#$%__", 2).unwrap(),
+      new LiteralTokenNode({
+        value: "#",
+        startAt: 2,
+        endAt: 5,
+      }),
+    );
+  });
+
   it("fails to parse with unexpected token error", () => {
     const parse = literalTokenParser("#");
     assert(parse("_____", 2).isErr());
@@ -59,6 +72,5 @@ describe(literalTokenParser.name, () => {
 
   it("throws error with invalid text length given", () => {
     assertThrows(() => literalTokenParser(""));
-    assertThrows(() => literalTokenParser("##"));
   });
 });

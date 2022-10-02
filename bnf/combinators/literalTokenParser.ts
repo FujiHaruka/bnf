@@ -7,9 +7,9 @@ import {
 } from "../utils/errors.ts";
 import { Result } from "../utils/Result.ts";
 
-export function literalTokenParser(charactor: string) {
-  if (charactor.length !== 1) {
-    throw new FatalError("charactor length must be 1");
+export function literalTokenParser(value: string) {
+  if (value.length === 0) {
+    throw new FatalError("value must not be empty");
   }
 
   const parse = (text: string, position: number): Result<LiteralTokenNode> => {
@@ -26,10 +26,11 @@ export function literalTokenParser(charactor: string) {
       );
     }
 
-    if (text.charAt(position) !== charactor) {
+    if (text.slice(position, position + value.length) !== value) {
       return Result.Err(
         new UnexpectedTokenError({
           ruleName: LiteralTokenType.name,
+          // TODO: show correct char
           char: text.charAt(position),
           position,
         }),
@@ -39,13 +40,13 @@ export function literalTokenParser(charactor: string) {
     const node = new LiteralTokenNode({
       value: text.charAt(position),
       startAt: position,
-      endAt: position + 1,
+      endAt: position + value.length,
     });
     return Result.Ok(node);
   };
 
   Object.defineProperty(parse, "name", {
-    value: `parseLiteral("${charactor}")`,
+    value: `parseLiteral("${value}")`,
     configurable: true,
   });
 
