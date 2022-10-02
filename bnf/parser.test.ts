@@ -55,6 +55,32 @@ describe("Parsers", () => {
         type: "rule-char",
       }],
     }],
+    // <literal> ::= '"' <text1> '"' | "'" <text2> "'"
+    [Parser["literal"], '"A"', {
+      type: "literal",
+      startAt: 0,
+      endAt: 3,
+      children: [{
+        value: '"',
+      }, {
+        type: "text1",
+      }, {
+        value: '"',
+      }],
+    }],
+    [Parser["literal"], '""', {
+      type: "literal",
+      startAt: 0,
+      endAt: 2,
+      children: [{
+        value: '"',
+      }, {
+        // Empty
+        type: "text1",
+      }, {
+        value: '"',
+      }],
+    }],
     // <term> ::= <literal> | "<" <rule-name> ">"
     [Parser["term"], "'A'", {
       type: "term",
