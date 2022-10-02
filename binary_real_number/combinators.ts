@@ -1,6 +1,9 @@
 import {
+  isLiteralTokenNode,
   LiteralTokenNode,
+  LiteralTokenType,
   NamedTokenNode,
+  TempTokenType,
   TokenNode,
   TokenType,
 } from "./token.ts";
@@ -11,8 +14,6 @@ import {
   UnexpectedTokenError,
 } from "./utils/errors.ts";
 import { Result } from "./utils/Result.ts";
-
-export const LiteralTokenType = new TokenType("$literal");
 
 export function literalTokenParser(charactor: string) {
   if (charactor.length !== 1) {
@@ -125,6 +126,7 @@ export function or(
 
   const parser: NamedTokenParser = (text, position) => {
     const results = parsers.map((parse) => parse(text, position));
+    // Ensure at least one result is successful
     if (results.every((result) => result.isErr())) {
       // First matched error
       return results[0] as Result<NamedTokenNode>;
@@ -134,6 +136,7 @@ export function or(
       result.unwrap()
     );
 
+    // Find the longest matched node
     const ends = nodes.map((node) => node.endAt);
     const maxEnd = Math.max(...ends);
     const longest = nodes.find((node) => node.endAt === maxEnd)!;
@@ -153,4 +156,44 @@ export function or(
   });
 
   return parser;
+}
+
+export function cleanupTempTokenNodes(node: LiteralTokenNode): LiteralTokenNode;
+export function cleanupTempTokenNodes(node: NamedTokenNode): NamedTokenNode;
+export function cleanupTempTokenNodes(node: TokenNode): TokenNode;
+export function cleanupTempTokenNodes(node: TokenNode): TokenNode {
+  if (isLiteralTokenNode(node)) {
+    return node;
+  }
+
+  if (node.children.length === 0) {
+    return node;
+  }
+
+  while (true) {
+    const hasTempChild = Boolean(
+      node.children.find((child) => child.type === TempTokenType),
+    );
+
+    if (hasTempChild) {
+      if (node.children.length !== 1) {
+        throw new FatalError("temp node must be a only child");
+      }
+
+      const tempNode = node.children[0] as NamedTokenNode;
+      node = new NamedTokenNode({
+        ...node,
+        children: tempNode.children,
+      });
+    } else {
+      break;
+    }
+  }
+
+  node = new NamedTokenNode({
+    ...node,
+    children: node.children.map(cleanupTempTokenNodes),
+  });
+
+  return node;
 }

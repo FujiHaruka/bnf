@@ -57,7 +57,7 @@ NamedTokenNode {
           endAt: 1,
           startAt: 0,
           type: TokenType {
-            name: "binary-number",
+            name: "binary-natural-number",
           },
         },
       ],
@@ -558,7 +558,7 @@ NamedTokenNode {
               endAt: 1,
               startAt: 0,
               type: TokenType {
-                name: "binary-number",
+                name: "binary-natural-number",
               },
             },
           ],
@@ -665,7 +665,7 @@ NamedTokenNode {
               endAt: 1,
               startAt: 0,
               type: TokenType {
-                name: "binary-number",
+                name: "binary-natural-number",
               },
             },
           ],
@@ -778,7 +778,7 @@ NamedTokenNode {
           endAt: 2,
           startAt: 1,
           type: TokenType {
-            name: "binary-number",
+            name: "binary-natural-number",
           },
         },
       ],

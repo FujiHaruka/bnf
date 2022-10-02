@@ -1,4 +1,9 @@
-import { concat, literalTokenParser, NamedTokenParser } from "./combinators.ts";
+import {
+  cleanupTempTokenNodes,
+  concat,
+  literalTokenParser,
+  NamedTokenParser,
+} from "./combinators.ts";
 import {
   assert,
   assertEquals,
@@ -6,7 +11,12 @@ import {
   describe,
   it,
 } from "../deps-test.ts";
-import { LiteralTokenNode, NamedTokenNode, TokenType } from "./token.ts";
+import {
+  LiteralTokenNode,
+  NamedTokenNode,
+  TempTokenType,
+  TokenType,
+} from "./token.ts";
 import {
   EmptyTextError,
   PositionExceededError,
@@ -212,5 +222,71 @@ describe(concat.name, () => {
 
   it("throws fatal error when empty array is given", () => {
     assertThrows(() => concat(new TokenType("dummay"), []));
+  });
+});
+
+describe(cleanupTempTokenNodes.name, () => {
+  it("cleanup $temp nodes", () => {
+    const tokenType = new TokenType("test");
+    const node = new NamedTokenNode({
+      type: tokenType,
+      startAt: 0,
+      endAt: 0,
+      children: [
+        new NamedTokenNode({
+          type: tokenType,
+          startAt: 0,
+          endAt: 0,
+          children: [
+            new NamedTokenNode({
+              type: TempTokenType,
+              startAt: 0,
+              endAt: 0,
+              children: [
+                new NamedTokenNode({
+                  type: tokenType,
+                  startAt: 0,
+                  endAt: 0,
+                  children: [],
+                }),
+                new NamedTokenNode({
+                  type: tokenType,
+                  startAt: 0,
+                  endAt: 0,
+                  children: [],
+                }),
+              ],
+            }),
+          ],
+        }),
+      ],
+    });
+    const expected = new NamedTokenNode({
+      type: tokenType,
+      startAt: 0,
+      endAt: 0,
+      children: [
+        new NamedTokenNode({
+          type: tokenType,
+          startAt: 0,
+          endAt: 0,
+          children: [
+            new NamedTokenNode({
+              type: tokenType,
+              startAt: 0,
+              endAt: 0,
+              children: [],
+            }),
+            new NamedTokenNode({
+              type: tokenType,
+              startAt: 0,
+              endAt: 0,
+              children: [],
+            }),
+          ],
+        }),
+      ],
+    });
+    assertEquals(cleanupTempTokenNodes(node), expected);
   });
 });

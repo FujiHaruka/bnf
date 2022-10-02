@@ -1,5 +1,3 @@
-import { Result } from "./utils/Result.ts";
-
 export abstract class BaseTokenNode {
   readonly type: TokenType;
   readonly startAt: number;
@@ -102,20 +100,10 @@ export class TokenType {
   }
 }
 
+export const TempTokenType = new TokenType("$temp");
 export const LiteralTokenType = new TokenType("$literal");
 
-export function parseLiteral(
-  text: string,
-  position: number,
-): Result<LiteralTokenNode> {
-  if (text.length <= position) {
-    return Result.Err(new Error("Position overtakes text length"));
-  }
-
-  const node = new LiteralTokenNode({
-    value: text.charAt(position),
-    startAt: position,
-    endAt: position + 1,
-  });
-  return Result.Ok(node);
-}
+export const isLiteralTokenNode = (node: TokenNode): node is LiteralTokenNode =>
+  node.type === LiteralTokenType;
+export const isNamedTokenNode = (node: TokenNode): node is NamedTokenNode =>
+  node.type !== LiteralTokenType;
