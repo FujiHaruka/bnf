@@ -1,6 +1,5 @@
-import { cleanupTempTokenNodes } from "./combinators/cleanupTempTokenNodes.ts";
 import { concat } from "./combinators/concat.ts";
-import { flattenRecursiveNodes } from "./combinators/flattenRecursiveNodes.ts";
+import { cleanNode } from "./nodes/cleanNode.ts";
 import { literalTokenParser } from "./combinators/literalTokenParser.ts";
 import { or } from "./combinators/or.ts";
 import { parseEmptyToken } from "./combinators/parseEmptyToken.ts";
@@ -106,8 +105,8 @@ export const Parser = {
         // TODO: EOL parser
         literalTokenParser("\n"),
       ]),
-      { minimumRepeat: 1 }
-    )(text, position)
+      { minimumRepeat: 1 },
+    )(text, position);
   },
   /**
    * <list> ::= <term> | <term> <opt-whitespace> <list>
@@ -355,8 +354,7 @@ export const Parser = {
 
 export function parse(text: string): NamedTokenNode {
   const node = Parser["syntax"](text, 0)
-    .map<NamedTokenNode>(cleanupTempTokenNodes)
-    .map<NamedTokenNode>(flattenRecursiveNodes)
+    .map(cleanNode)
     .unwrap();
 
   if (node.endAt !== text.length) {

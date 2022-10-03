@@ -1,7 +1,7 @@
 export abstract class BaseTokenNode {
-  readonly type: TokenType;
-  readonly startAt: number;
-  readonly endAt: number;
+  type: TokenType;
+  startAt: number;
+  endAt: number;
 
   constructor({
     type,
@@ -19,7 +19,7 @@ export abstract class BaseTokenNode {
 }
 
 export class LiteralTokenNode extends BaseTokenNode {
-  readonly value: string;
+  value: string;
 
   constructor({
     value,
@@ -45,7 +45,7 @@ export class LiteralTokenNode extends BaseTokenNode {
 }
 
 export class NamedTokenNode extends BaseTokenNode {
-  readonly children: TokenNode[];
+  children: TokenNode[];
 
   constructor({
     type,
