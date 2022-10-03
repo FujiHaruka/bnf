@@ -24,26 +24,19 @@ export function cleanupTempTokenNodes(node: TokenNode): TokenNode {
     );
 
     if (hasTempChild) {
-      const children: TokenNode[] = node.children.flatMap((child) => {
+      node.children = node.children.flatMap((child) => {
         if (child.type === TempTokenType) {
           return (child as NamedTokenNode).children;
         } else {
           return [child];
         }
       });
-      node = new NamedTokenNode({
-        ...node,
-        children,
-      });
     } else {
       break;
     }
   }
 
-  node = new NamedTokenNode({
-    ...node,
-    children: node.children.map(cleanupTempTokenNodes),
-  });
+  node.children.forEach(cleanupTempTokenNodes)
 
   return node;
 }

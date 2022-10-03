@@ -20,7 +20,7 @@ export function flattenRecursiveNodes(node: TokenNode): TokenNode {
       .filter((child): child is NamedTokenNode => child.type === parentType);
 
     if (parentTypeNodes.length > 0) {
-      const children: TokenNode[] = node.children
+      node.children = node.children
         .flatMap((child) => {
           const parentTypeChild = parentTypeNodes.find((node) =>
             node === child
@@ -31,19 +31,12 @@ export function flattenRecursiveNodes(node: TokenNode): TokenNode {
             return [child];
           }
         });
-      node = new NamedTokenNode({
-        ...node,
-        children,
-      });
     } else {
       break;
     }
   }
 
-  node = new NamedTokenNode({
-    ...node,
-    children: node.children.map(flattenRecursiveNodes),
-  });
+  node.children.forEach(flattenRecursiveNodes)
 
   return node;
 }
