@@ -1,10 +1,10 @@
 import { cleanupTempTokenNodes } from "./combinators/cleanupTempTokenNodes.ts";
 import { concat } from "./combinators/concat.ts";
 import { flattenRecursiveNodes } from "./combinators/flattenRecursiveNodes.ts";
-import { leftRecursion } from "./combinators/leftRecursion.ts";
 import { literalTokenParser } from "./combinators/literalTokenParser.ts";
 import { or } from "./combinators/or.ts";
 import { parseEmptyToken } from "./combinators/parseEmptyToken.ts";
+import { repeat } from "./combinators/repeat.ts";
 import { NamedTokenNode, TempTokenType, TokenType } from "./token.ts";
 import { UnexpectedTokenError } from "./utils/errors.ts";
 import { Result } from "./utils/Result.ts";
@@ -95,20 +95,19 @@ export const Parser = {
   },
   /**
    * <line-end> ::= <opt-whitespace> <EOL> | <line-end> <line-end>
+   * equivalent to
+   * <line-end> ::= (<opt-whitespace> <EOL>)+
    */
   "line-end"(text: string, position: number): Result<NamedTokenNode> {
-    return or(TokenTypes["line-end"], [
+    return repeat(
+      TokenTypes["line-end"],
       concat(TempTokenType, [
         Parser["opt-whitespace"],
         // TODO: EOL parser
         literalTokenParser("\n"),
       ]),
-      // TODO: is it left recursion?
-      concat(TempTokenType, [
-        Parser["line-end"],
-        Parser["line-end"],
-      ]),
-    ])(text, position);
+      { minimumRepeat: 1 }
+    )(text, position)
   },
   /**
    * <list> ::= <term> | <term> <opt-whitespace> <list>
@@ -331,12 +330,16 @@ export const Parser = {
   },
   /**
    * <rule-name> ::= <letter> | <rule-name> <rule-char>
+   * equivalent to
+   * <rule-name> ::= <letter> <rule-char>*
    */
   "rule-name"(text: string, position: number): Result<NamedTokenNode> {
-    return leftRecursion(TokenTypes["rule-name"], {
-      base: Parser["letter"],
-      tail: Parser["rule-char"],
-    })(text, position);
+    return concat(TokenTypes["rule-name"], [
+      Parser["letter"],
+      repeat(TempTokenType, Parser["rule-char"], {
+        minimumRepeat: 0,
+      }),
+    ])(text, position);
   },
   /**
    * <rule-char> ::= <letter> | <digit> | "-"

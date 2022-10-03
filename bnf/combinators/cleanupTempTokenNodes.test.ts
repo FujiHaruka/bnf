@@ -66,4 +66,94 @@ describe(cleanupTempTokenNodes.name, () => {
     });
     assertEquals(cleanupTempTokenNodes(node), expected);
   });
+
+  it("works with $temp nodes in a children", () => {
+    const tokenType = new TokenType("test");
+    const node = new NamedTokenNode({
+      type: tokenType,
+      startAt: 0,
+      endAt: 0,
+      children: [
+        new NamedTokenNode({
+          type: tokenType,
+          startAt: 0,
+          endAt: 0,
+          children: [
+            new NamedTokenNode({
+              type: TempTokenType,
+              startAt: 0,
+              endAt: 0,
+              children: [
+                new NamedTokenNode({
+                  type: tokenType,
+                  startAt: 0,
+                  endAt: 0,
+                  children: [],
+                }),
+              ],
+            }),
+          ],
+        }),
+        new NamedTokenNode({
+          type: TempTokenType,
+          startAt: 0,
+          endAt: 0,
+          children: [
+            new NamedTokenNode({
+              type: tokenType,
+              startAt: 0,
+              endAt: 0,
+              children: [],
+            }),
+          ],
+        }),
+        new NamedTokenNode({
+          type: TempTokenType,
+          startAt: 0,
+          endAt: 0,
+          children: [
+            new NamedTokenNode({
+              type: tokenType,
+              startAt: 0,
+              endAt: 0,
+              children: [],
+            }),
+          ],
+        }),
+      ],
+    });
+    const expected = new NamedTokenNode({
+      type: tokenType,
+      startAt: 0,
+      endAt: 0,
+      children: [
+        new NamedTokenNode({
+          type: tokenType,
+          startAt: 0,
+          endAt: 0,
+          children: [
+            new NamedTokenNode({
+              type: tokenType,
+              startAt: 0,
+              endAt: 0,
+              children: [],
+            }),
+          ],
+        }),
+        new NamedTokenNode({
+          type: tokenType,
+          startAt: 0,
+          endAt: 0,
+          children: [],
+        }),
+        new NamedTokenNode({
+          type: tokenType,
+          startAt: 0,
+          endAt: 0,
+          children: [],
+        }),
+      ],
+    });
+    assertEquals(cleanupTempTokenNodes(node), expected);
+  });
 });

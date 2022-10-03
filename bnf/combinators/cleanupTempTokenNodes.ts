@@ -1,4 +1,3 @@
-import { FatalError } from "../utils/errors.ts";
 import {
   isLiteralTokenNode,
   LiteralTokenNode,
@@ -25,14 +24,16 @@ export function cleanupTempTokenNodes(node: TokenNode): TokenNode {
     );
 
     if (hasTempChild) {
-      if (node.children.length !== 1) {
-        throw new FatalError("temp node must be a only child");
-      }
-
-      const tempNode = node.children[0] as NamedTokenNode;
+      const children: TokenNode[] = node.children.flatMap((child) => {
+        if (child.type === TempTokenType) {
+          return (child as NamedTokenNode).children;
+        } else {
+          return [child];
+        }
+      });
       node = new NamedTokenNode({
         ...node,
-        children: tempNode.children,
+        children,
       });
     } else {
       break;
