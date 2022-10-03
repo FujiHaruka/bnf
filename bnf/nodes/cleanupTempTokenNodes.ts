@@ -36,7 +36,7 @@ export function cleanupTempTokenNodes(node: TokenNode): TokenNode {
     }
   }
 
-  node.children.forEach(cleanupTempTokenNodes)
+  node.children.forEach(cleanupTempTokenNodes);
 
   return node;
 }

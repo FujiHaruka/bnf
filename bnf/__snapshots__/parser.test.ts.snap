@@ -1,0 +1,3552 @@
+export const snapshot = {};
+
+snapshot[`parse / success with binary_number.bnf 1`] = `
+NamedTokenNode {
+  children: [
+    NamedTokenNode {
+      children: [
+        LiteralTokenNode {
+          endAt: 1,
+          startAt: 0,
+          type: TokenType {
+            name: "\$literal",
+          },
+          value: "<",
+        },
+        NamedTokenNode {
+          children: [
+            NamedTokenNode {
+              children: [
+                LiteralTokenNode {
+                  endAt: 2,
+                  startAt: 1,
+                  type: TokenType {
+                    name: "\$literal",
+                  },
+                  value: "b",
+                },
+              ],
+              endAt: 2,
+              startAt: 1,
+              type: TokenType {
+                name: "letter",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 3,
+                      startAt: 2,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "i",
+                    },
+                  ],
+                  endAt: 3,
+                  startAt: 2,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 3,
+              startAt: 2,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 4,
+                      startAt: 3,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "n",
+                    },
+                  ],
+                  endAt: 4,
+                  startAt: 3,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 4,
+              startAt: 3,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 5,
+                      startAt: 4,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "a",
+                    },
+                  ],
+                  endAt: 5,
+                  startAt: 4,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 5,
+              startAt: 4,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 6,
+                      startAt: 5,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "r",
+                    },
+                  ],
+                  endAt: 6,
+                  startAt: 5,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 6,
+              startAt: 5,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 7,
+                      startAt: 6,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "y",
+                    },
+                  ],
+                  endAt: 7,
+                  startAt: 6,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 7,
+              startAt: 6,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                LiteralTokenNode {
+                  endAt: 8,
+                  startAt: 7,
+                  type: TokenType {
+                    name: "\$literal",
+                  },
+                  value: "-",
+                },
+              ],
+              endAt: 8,
+              startAt: 7,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 9,
+                      startAt: 8,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "n",
+                    },
+                  ],
+                  endAt: 9,
+                  startAt: 8,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 9,
+              startAt: 8,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 10,
+                      startAt: 9,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "u",
+                    },
+                  ],
+                  endAt: 10,
+                  startAt: 9,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 10,
+              startAt: 9,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 11,
+                      startAt: 10,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "m",
+                    },
+                  ],
+                  endAt: 11,
+                  startAt: 10,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 11,
+              startAt: 10,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 12,
+                      startAt: 11,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "b",
+                    },
+                  ],
+                  endAt: 12,
+                  startAt: 11,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 12,
+              startAt: 11,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 13,
+                      startAt: 12,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "e",
+                    },
+                  ],
+                  endAt: 13,
+                  startAt: 12,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 13,
+              startAt: 12,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 14,
+                      startAt: 13,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "r",
+                    },
+                  ],
+                  endAt: 14,
+                  startAt: 13,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 14,
+              startAt: 13,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+          ],
+          endAt: 14,
+          startAt: 1,
+          type: TokenType {
+            name: "rule-name",
+          },
+        },
+        LiteralTokenNode {
+          endAt: 15,
+          startAt: 14,
+          type: TokenType {
+            name: "\$literal",
+          },
+          value: ">",
+        },
+        NamedTokenNode {
+          children: [
+            LiteralTokenNode {
+              endAt: 16,
+              startAt: 15,
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: " ",
+            },
+          ],
+          endAt: 16,
+          startAt: 15,
+          type: TokenType {
+            name: "opt-whitespace",
+          },
+        },
+        LiteralTokenNode {
+          endAt: 19,
+          startAt: 16,
+          type: TokenType {
+            name: "\$literal",
+          },
+          value: ":",
+        },
+        NamedTokenNode {
+          children: [
+            LiteralTokenNode {
+              endAt: 20,
+              startAt: 19,
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: " ",
+            },
+          ],
+          endAt: 20,
+          startAt: 19,
+          type: TokenType {
+            name: "opt-whitespace",
+          },
+        },
+        NamedTokenNode {
+          children: [
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 21,
+                      startAt: 20,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "<",
+                    },
+                    NamedTokenNode {
+                      children: [
+                        NamedTokenNode {
+                          children: [
+                            LiteralTokenNode {
+                              endAt: 22,
+                              startAt: 21,
+                              type: TokenType {
+                                name: "\$literal",
+                              },
+                              value: "b",
+                            },
+                          ],
+                          endAt: 22,
+                          startAt: 21,
+                          type: TokenType {
+                            name: "letter",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 23,
+                                  startAt: 22,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "i",
+                                },
+                              ],
+                              endAt: 23,
+                              startAt: 22,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 23,
+                          startAt: 22,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 24,
+                                  startAt: 23,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "n",
+                                },
+                              ],
+                              endAt: 24,
+                              startAt: 23,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 24,
+                          startAt: 23,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 25,
+                                  startAt: 24,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "a",
+                                },
+                              ],
+                              endAt: 25,
+                              startAt: 24,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 25,
+                          startAt: 24,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 26,
+                                  startAt: 25,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "r",
+                                },
+                              ],
+                              endAt: 26,
+                              startAt: 25,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 26,
+                          startAt: 25,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 27,
+                                  startAt: 26,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "y",
+                                },
+                              ],
+                              endAt: 27,
+                              startAt: 26,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 27,
+                          startAt: 26,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            LiteralTokenNode {
+                              endAt: 28,
+                              startAt: 27,
+                              type: TokenType {
+                                name: "\$literal",
+                              },
+                              value: "-",
+                            },
+                          ],
+                          endAt: 28,
+                          startAt: 27,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 29,
+                                  startAt: 28,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "d",
+                                },
+                              ],
+                              endAt: 29,
+                              startAt: 28,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 29,
+                          startAt: 28,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 30,
+                                  startAt: 29,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "i",
+                                },
+                              ],
+                              endAt: 30,
+                              startAt: 29,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 30,
+                          startAt: 29,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 31,
+                                  startAt: 30,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "g",
+                                },
+                              ],
+                              endAt: 31,
+                              startAt: 30,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 31,
+                          startAt: 30,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 32,
+                                  startAt: 31,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "i",
+                                },
+                              ],
+                              endAt: 32,
+                              startAt: 31,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 32,
+                          startAt: 31,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 33,
+                                  startAt: 32,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "t",
+                                },
+                              ],
+                              endAt: 33,
+                              startAt: 32,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 33,
+                          startAt: 32,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                      ],
+                      endAt: 33,
+                      startAt: 21,
+                      type: TokenType {
+                        name: "rule-name",
+                      },
+                    },
+                    LiteralTokenNode {
+                      endAt: 34,
+                      startAt: 33,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: ">",
+                    },
+                  ],
+                  endAt: 34,
+                  startAt: 20,
+                  type: TokenType {
+                    name: "term",
+                  },
+                },
+              ],
+              endAt: 34,
+              startAt: 20,
+              type: TokenType {
+                name: "list",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                LiteralTokenNode {
+                  endAt: 35,
+                  startAt: 34,
+                  type: TokenType {
+                    name: "\$literal",
+                  },
+                  value: " ",
+                },
+              ],
+              endAt: 35,
+              startAt: 34,
+              type: TokenType {
+                name: "opt-whitespace",
+              },
+            },
+            LiteralTokenNode {
+              endAt: 36,
+              startAt: 35,
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: "|",
+            },
+            NamedTokenNode {
+              children: [
+                LiteralTokenNode {
+                  endAt: 37,
+                  startAt: 36,
+                  type: TokenType {
+                    name: "\$literal",
+                  },
+                  value: " ",
+                },
+              ],
+              endAt: 37,
+              startAt: 36,
+              type: TokenType {
+                name: "opt-whitespace",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    NamedTokenNode {
+                      children: [
+                        LiteralTokenNode {
+                          endAt: 38,
+                          startAt: 37,
+                          type: TokenType {
+                            name: "\$literal",
+                          },
+                          value: '"',
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                NamedTokenNode {
+                                  children: [
+                                    NamedTokenNode {
+                                      children: [
+                                        LiteralTokenNode {
+                                          endAt: 39,
+                                          startAt: 38,
+                                          type: TokenType {
+                                            name: "\$literal",
+                                          },
+                                          value: "1",
+                                        },
+                                      ],
+                                      endAt: 39,
+                                      startAt: 38,
+                                      type: TokenType {
+                                        name: "digit",
+                                      },
+                                    },
+                                  ],
+                                  endAt: 39,
+                                  startAt: 38,
+                                  type: TokenType {
+                                    name: "character",
+                                  },
+                                },
+                              ],
+                              endAt: 39,
+                              startAt: 38,
+                              type: TokenType {
+                                name: "character1",
+                              },
+                            },
+                          ],
+                          endAt: 39,
+                          startAt: 38,
+                          type: TokenType {
+                            name: "text1",
+                          },
+                        },
+                        LiteralTokenNode {
+                          endAt: 40,
+                          startAt: 39,
+                          type: TokenType {
+                            name: "\$literal",
+                          },
+                          value: '"',
+                        },
+                      ],
+                      endAt: 40,
+                      startAt: 37,
+                      type: TokenType {
+                        name: "literal",
+                      },
+                    },
+                  ],
+                  endAt: 40,
+                  startAt: 37,
+                  type: TokenType {
+                    name: "term",
+                  },
+                },
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 41,
+                      startAt: 40,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: " ",
+                    },
+                  ],
+                  endAt: 41,
+                  startAt: 40,
+                  type: TokenType {
+                    name: "opt-whitespace",
+                  },
+                },
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 42,
+                      startAt: 41,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "<",
+                    },
+                    NamedTokenNode {
+                      children: [
+                        NamedTokenNode {
+                          children: [
+                            LiteralTokenNode {
+                              endAt: 43,
+                              startAt: 42,
+                              type: TokenType {
+                                name: "\$literal",
+                              },
+                              value: "b",
+                            },
+                          ],
+                          endAt: 43,
+                          startAt: 42,
+                          type: TokenType {
+                            name: "letter",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 44,
+                                  startAt: 43,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "i",
+                                },
+                              ],
+                              endAt: 44,
+                              startAt: 43,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 44,
+                          startAt: 43,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 45,
+                                  startAt: 44,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "n",
+                                },
+                              ],
+                              endAt: 45,
+                              startAt: 44,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 45,
+                          startAt: 44,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 46,
+                                  startAt: 45,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "a",
+                                },
+                              ],
+                              endAt: 46,
+                              startAt: 45,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 46,
+                          startAt: 45,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 47,
+                                  startAt: 46,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "r",
+                                },
+                              ],
+                              endAt: 47,
+                              startAt: 46,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 47,
+                          startAt: 46,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 48,
+                                  startAt: 47,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "y",
+                                },
+                              ],
+                              endAt: 48,
+                              startAt: 47,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 48,
+                          startAt: 47,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            LiteralTokenNode {
+                              endAt: 49,
+                              startAt: 48,
+                              type: TokenType {
+                                name: "\$literal",
+                              },
+                              value: "-",
+                            },
+                          ],
+                          endAt: 49,
+                          startAt: 48,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 50,
+                                  startAt: 49,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "s",
+                                },
+                              ],
+                              endAt: 50,
+                              startAt: 49,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 50,
+                          startAt: 49,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 51,
+                                  startAt: 50,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "e",
+                                },
+                              ],
+                              endAt: 51,
+                              startAt: 50,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 51,
+                          startAt: 50,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 52,
+                                  startAt: 51,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "q",
+                                },
+                              ],
+                              endAt: 52,
+                              startAt: 51,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 52,
+                          startAt: 51,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 53,
+                                  startAt: 52,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "u",
+                                },
+                              ],
+                              endAt: 53,
+                              startAt: 52,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 53,
+                          startAt: 52,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 54,
+                                  startAt: 53,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "e",
+                                },
+                              ],
+                              endAt: 54,
+                              startAt: 53,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 54,
+                          startAt: 53,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 55,
+                                  startAt: 54,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "n",
+                                },
+                              ],
+                              endAt: 55,
+                              startAt: 54,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 55,
+                          startAt: 54,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 56,
+                                  startAt: 55,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "c",
+                                },
+                              ],
+                              endAt: 56,
+                              startAt: 55,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 56,
+                          startAt: 55,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 57,
+                                  startAt: 56,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "e",
+                                },
+                              ],
+                              endAt: 57,
+                              startAt: 56,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 57,
+                          startAt: 56,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                      ],
+                      endAt: 57,
+                      startAt: 42,
+                      type: TokenType {
+                        name: "rule-name",
+                      },
+                    },
+                    LiteralTokenNode {
+                      endAt: 58,
+                      startAt: 57,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: ">",
+                    },
+                  ],
+                  endAt: 58,
+                  startAt: 41,
+                  type: TokenType {
+                    name: "term",
+                  },
+                },
+              ],
+              endAt: 58,
+              startAt: 37,
+              type: TokenType {
+                name: "list",
+              },
+            },
+          ],
+          endAt: 58,
+          startAt: 20,
+          type: TokenType {
+            name: "expression",
+          },
+        },
+        NamedTokenNode {
+          children: [
+            LiteralTokenNode {
+              endAt: 59,
+              startAt: 58,
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: "
+",
+            },
+          ],
+          endAt: 59,
+          startAt: 58,
+          type: TokenType {
+            name: "line-end",
+          },
+        },
+      ],
+      endAt: 59,
+      startAt: 0,
+      type: TokenType {
+        name: "rule",
+      },
+    },
+    NamedTokenNode {
+      children: [
+        LiteralTokenNode {
+          endAt: 60,
+          startAt: 59,
+          type: TokenType {
+            name: "\$literal",
+          },
+          value: "<",
+        },
+        NamedTokenNode {
+          children: [
+            NamedTokenNode {
+              children: [
+                LiteralTokenNode {
+                  endAt: 61,
+                  startAt: 60,
+                  type: TokenType {
+                    name: "\$literal",
+                  },
+                  value: "b",
+                },
+              ],
+              endAt: 61,
+              startAt: 60,
+              type: TokenType {
+                name: "letter",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 62,
+                      startAt: 61,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "i",
+                    },
+                  ],
+                  endAt: 62,
+                  startAt: 61,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 62,
+              startAt: 61,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 63,
+                      startAt: 62,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "n",
+                    },
+                  ],
+                  endAt: 63,
+                  startAt: 62,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 63,
+              startAt: 62,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 64,
+                      startAt: 63,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "a",
+                    },
+                  ],
+                  endAt: 64,
+                  startAt: 63,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 64,
+              startAt: 63,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 65,
+                      startAt: 64,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "r",
+                    },
+                  ],
+                  endAt: 65,
+                  startAt: 64,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 65,
+              startAt: 64,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 66,
+                      startAt: 65,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "y",
+                    },
+                  ],
+                  endAt: 66,
+                  startAt: 65,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 66,
+              startAt: 65,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                LiteralTokenNode {
+                  endAt: 67,
+                  startAt: 66,
+                  type: TokenType {
+                    name: "\$literal",
+                  },
+                  value: "-",
+                },
+              ],
+              endAt: 67,
+              startAt: 66,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 68,
+                      startAt: 67,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "s",
+                    },
+                  ],
+                  endAt: 68,
+                  startAt: 67,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 68,
+              startAt: 67,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 69,
+                      startAt: 68,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "e",
+                    },
+                  ],
+                  endAt: 69,
+                  startAt: 68,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 69,
+              startAt: 68,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 70,
+                      startAt: 69,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "q",
+                    },
+                  ],
+                  endAt: 70,
+                  startAt: 69,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 70,
+              startAt: 69,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 71,
+                      startAt: 70,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "u",
+                    },
+                  ],
+                  endAt: 71,
+                  startAt: 70,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 71,
+              startAt: 70,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 72,
+                      startAt: 71,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "e",
+                    },
+                  ],
+                  endAt: 72,
+                  startAt: 71,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 72,
+              startAt: 71,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 73,
+                      startAt: 72,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "n",
+                    },
+                  ],
+                  endAt: 73,
+                  startAt: 72,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 73,
+              startAt: 72,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 74,
+                      startAt: 73,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "c",
+                    },
+                  ],
+                  endAt: 74,
+                  startAt: 73,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 74,
+              startAt: 73,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 75,
+                      startAt: 74,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "e",
+                    },
+                  ],
+                  endAt: 75,
+                  startAt: 74,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 75,
+              startAt: 74,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+          ],
+          endAt: 75,
+          startAt: 60,
+          type: TokenType {
+            name: "rule-name",
+          },
+        },
+        LiteralTokenNode {
+          endAt: 76,
+          startAt: 75,
+          type: TokenType {
+            name: "\$literal",
+          },
+          value: ">",
+        },
+        NamedTokenNode {
+          children: [
+            LiteralTokenNode {
+              endAt: 77,
+              startAt: 76,
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: " ",
+            },
+          ],
+          endAt: 77,
+          startAt: 76,
+          type: TokenType {
+            name: "opt-whitespace",
+          },
+        },
+        LiteralTokenNode {
+          endAt: 80,
+          startAt: 77,
+          type: TokenType {
+            name: "\$literal",
+          },
+          value: ":",
+        },
+        NamedTokenNode {
+          children: [
+            LiteralTokenNode {
+              endAt: 81,
+              startAt: 80,
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: " ",
+            },
+          ],
+          endAt: 81,
+          startAt: 80,
+          type: TokenType {
+            name: "opt-whitespace",
+          },
+        },
+        NamedTokenNode {
+          children: [
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 82,
+                      startAt: 81,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "<",
+                    },
+                    NamedTokenNode {
+                      children: [
+                        NamedTokenNode {
+                          children: [
+                            LiteralTokenNode {
+                              endAt: 83,
+                              startAt: 82,
+                              type: TokenType {
+                                name: "\$literal",
+                              },
+                              value: "b",
+                            },
+                          ],
+                          endAt: 83,
+                          startAt: 82,
+                          type: TokenType {
+                            name: "letter",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 84,
+                                  startAt: 83,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "i",
+                                },
+                              ],
+                              endAt: 84,
+                              startAt: 83,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 84,
+                          startAt: 83,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 85,
+                                  startAt: 84,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "n",
+                                },
+                              ],
+                              endAt: 85,
+                              startAt: 84,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 85,
+                          startAt: 84,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 86,
+                                  startAt: 85,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "a",
+                                },
+                              ],
+                              endAt: 86,
+                              startAt: 85,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 86,
+                          startAt: 85,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 87,
+                                  startAt: 86,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "r",
+                                },
+                              ],
+                              endAt: 87,
+                              startAt: 86,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 87,
+                          startAt: 86,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 88,
+                                  startAt: 87,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "y",
+                                },
+                              ],
+                              endAt: 88,
+                              startAt: 87,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 88,
+                          startAt: 87,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            LiteralTokenNode {
+                              endAt: 89,
+                              startAt: 88,
+                              type: TokenType {
+                                name: "\$literal",
+                              },
+                              value: "-",
+                            },
+                          ],
+                          endAt: 89,
+                          startAt: 88,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 90,
+                                  startAt: 89,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "d",
+                                },
+                              ],
+                              endAt: 90,
+                              startAt: 89,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 90,
+                          startAt: 89,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 91,
+                                  startAt: 90,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "i",
+                                },
+                              ],
+                              endAt: 91,
+                              startAt: 90,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 91,
+                          startAt: 90,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 92,
+                                  startAt: 91,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "g",
+                                },
+                              ],
+                              endAt: 92,
+                              startAt: 91,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 92,
+                          startAt: 91,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 93,
+                                  startAt: 92,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "i",
+                                },
+                              ],
+                              endAt: 93,
+                              startAt: 92,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 93,
+                          startAt: 92,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 94,
+                                  startAt: 93,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "t",
+                                },
+                              ],
+                              endAt: 94,
+                              startAt: 93,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 94,
+                          startAt: 93,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                      ],
+                      endAt: 94,
+                      startAt: 82,
+                      type: TokenType {
+                        name: "rule-name",
+                      },
+                    },
+                    LiteralTokenNode {
+                      endAt: 95,
+                      startAt: 94,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: ">",
+                    },
+                  ],
+                  endAt: 95,
+                  startAt: 81,
+                  type: TokenType {
+                    name: "term",
+                  },
+                },
+              ],
+              endAt: 95,
+              startAt: 81,
+              type: TokenType {
+                name: "list",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                LiteralTokenNode {
+                  endAt: 96,
+                  startAt: 95,
+                  type: TokenType {
+                    name: "\$literal",
+                  },
+                  value: " ",
+                },
+              ],
+              endAt: 96,
+              startAt: 95,
+              type: TokenType {
+                name: "opt-whitespace",
+              },
+            },
+            LiteralTokenNode {
+              endAt: 97,
+              startAt: 96,
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: "|",
+            },
+            NamedTokenNode {
+              children: [
+                LiteralTokenNode {
+                  endAt: 98,
+                  startAt: 97,
+                  type: TokenType {
+                    name: "\$literal",
+                  },
+                  value: " ",
+                },
+              ],
+              endAt: 98,
+              startAt: 97,
+              type: TokenType {
+                name: "opt-whitespace",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 99,
+                      startAt: 98,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "<",
+                    },
+                    NamedTokenNode {
+                      children: [
+                        NamedTokenNode {
+                          children: [
+                            LiteralTokenNode {
+                              endAt: 100,
+                              startAt: 99,
+                              type: TokenType {
+                                name: "\$literal",
+                              },
+                              value: "b",
+                            },
+                          ],
+                          endAt: 100,
+                          startAt: 99,
+                          type: TokenType {
+                            name: "letter",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 101,
+                                  startAt: 100,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "i",
+                                },
+                              ],
+                              endAt: 101,
+                              startAt: 100,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 101,
+                          startAt: 100,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 102,
+                                  startAt: 101,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "n",
+                                },
+                              ],
+                              endAt: 102,
+                              startAt: 101,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 102,
+                          startAt: 101,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 103,
+                                  startAt: 102,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "a",
+                                },
+                              ],
+                              endAt: 103,
+                              startAt: 102,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 103,
+                          startAt: 102,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 104,
+                                  startAt: 103,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "r",
+                                },
+                              ],
+                              endAt: 104,
+                              startAt: 103,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 104,
+                          startAt: 103,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 105,
+                                  startAt: 104,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "y",
+                                },
+                              ],
+                              endAt: 105,
+                              startAt: 104,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 105,
+                          startAt: 104,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            LiteralTokenNode {
+                              endAt: 106,
+                              startAt: 105,
+                              type: TokenType {
+                                name: "\$literal",
+                              },
+                              value: "-",
+                            },
+                          ],
+                          endAt: 106,
+                          startAt: 105,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 107,
+                                  startAt: 106,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "d",
+                                },
+                              ],
+                              endAt: 107,
+                              startAt: 106,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 107,
+                          startAt: 106,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 108,
+                                  startAt: 107,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "i",
+                                },
+                              ],
+                              endAt: 108,
+                              startAt: 107,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 108,
+                          startAt: 107,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 109,
+                                  startAt: 108,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "g",
+                                },
+                              ],
+                              endAt: 109,
+                              startAt: 108,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 109,
+                          startAt: 108,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 110,
+                                  startAt: 109,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "i",
+                                },
+                              ],
+                              endAt: 110,
+                              startAt: 109,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 110,
+                          startAt: 109,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 111,
+                                  startAt: 110,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "t",
+                                },
+                              ],
+                              endAt: 111,
+                              startAt: 110,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 111,
+                          startAt: 110,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                      ],
+                      endAt: 111,
+                      startAt: 99,
+                      type: TokenType {
+                        name: "rule-name",
+                      },
+                    },
+                    LiteralTokenNode {
+                      endAt: 112,
+                      startAt: 111,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: ">",
+                    },
+                  ],
+                  endAt: 112,
+                  startAt: 98,
+                  type: TokenType {
+                    name: "term",
+                  },
+                },
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 113,
+                      startAt: 112,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: " ",
+                    },
+                  ],
+                  endAt: 113,
+                  startAt: 112,
+                  type: TokenType {
+                    name: "opt-whitespace",
+                  },
+                },
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 114,
+                      startAt: 113,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "<",
+                    },
+                    NamedTokenNode {
+                      children: [
+                        NamedTokenNode {
+                          children: [
+                            LiteralTokenNode {
+                              endAt: 115,
+                              startAt: 114,
+                              type: TokenType {
+                                name: "\$literal",
+                              },
+                              value: "b",
+                            },
+                          ],
+                          endAt: 115,
+                          startAt: 114,
+                          type: TokenType {
+                            name: "letter",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 116,
+                                  startAt: 115,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "i",
+                                },
+                              ],
+                              endAt: 116,
+                              startAt: 115,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 116,
+                          startAt: 115,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 117,
+                                  startAt: 116,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "n",
+                                },
+                              ],
+                              endAt: 117,
+                              startAt: 116,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 117,
+                          startAt: 116,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 118,
+                                  startAt: 117,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "a",
+                                },
+                              ],
+                              endAt: 118,
+                              startAt: 117,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 118,
+                          startAt: 117,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 119,
+                                  startAt: 118,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "r",
+                                },
+                              ],
+                              endAt: 119,
+                              startAt: 118,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 119,
+                          startAt: 118,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 120,
+                                  startAt: 119,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "y",
+                                },
+                              ],
+                              endAt: 120,
+                              startAt: 119,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 120,
+                          startAt: 119,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            LiteralTokenNode {
+                              endAt: 121,
+                              startAt: 120,
+                              type: TokenType {
+                                name: "\$literal",
+                              },
+                              value: "-",
+                            },
+                          ],
+                          endAt: 121,
+                          startAt: 120,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 122,
+                                  startAt: 121,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "s",
+                                },
+                              ],
+                              endAt: 122,
+                              startAt: 121,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 122,
+                          startAt: 121,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 123,
+                                  startAt: 122,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "e",
+                                },
+                              ],
+                              endAt: 123,
+                              startAt: 122,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 123,
+                          startAt: 122,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 124,
+                                  startAt: 123,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "q",
+                                },
+                              ],
+                              endAt: 124,
+                              startAt: 123,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 124,
+                          startAt: 123,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 125,
+                                  startAt: 124,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "u",
+                                },
+                              ],
+                              endAt: 125,
+                              startAt: 124,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 125,
+                          startAt: 124,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 126,
+                                  startAt: 125,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "e",
+                                },
+                              ],
+                              endAt: 126,
+                              startAt: 125,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 126,
+                          startAt: 125,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 127,
+                                  startAt: 126,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "n",
+                                },
+                              ],
+                              endAt: 127,
+                              startAt: 126,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 127,
+                          startAt: 126,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 128,
+                                  startAt: 127,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "c",
+                                },
+                              ],
+                              endAt: 128,
+                              startAt: 127,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 128,
+                          startAt: 127,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                LiteralTokenNode {
+                                  endAt: 129,
+                                  startAt: 128,
+                                  type: TokenType {
+                                    name: "\$literal",
+                                  },
+                                  value: "e",
+                                },
+                              ],
+                              endAt: 129,
+                              startAt: 128,
+                              type: TokenType {
+                                name: "letter",
+                              },
+                            },
+                          ],
+                          endAt: 129,
+                          startAt: 128,
+                          type: TokenType {
+                            name: "rule-char",
+                          },
+                        },
+                      ],
+                      endAt: 129,
+                      startAt: 114,
+                      type: TokenType {
+                        name: "rule-name",
+                      },
+                    },
+                    LiteralTokenNode {
+                      endAt: 130,
+                      startAt: 129,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: ">",
+                    },
+                  ],
+                  endAt: 130,
+                  startAt: 113,
+                  type: TokenType {
+                    name: "term",
+                  },
+                },
+              ],
+              endAt: 130,
+              startAt: 98,
+              type: TokenType {
+                name: "list",
+              },
+            },
+          ],
+          endAt: 130,
+          startAt: 81,
+          type: TokenType {
+            name: "expression",
+          },
+        },
+        NamedTokenNode {
+          children: [
+            LiteralTokenNode {
+              endAt: 131,
+              startAt: 130,
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: "
+",
+            },
+          ],
+          endAt: 131,
+          startAt: 130,
+          type: TokenType {
+            name: "line-end",
+          },
+        },
+      ],
+      endAt: 131,
+      startAt: 59,
+      type: TokenType {
+        name: "rule",
+      },
+    },
+    NamedTokenNode {
+      children: [
+        LiteralTokenNode {
+          endAt: 132,
+          startAt: 131,
+          type: TokenType {
+            name: "\$literal",
+          },
+          value: "<",
+        },
+        NamedTokenNode {
+          children: [
+            NamedTokenNode {
+              children: [
+                LiteralTokenNode {
+                  endAt: 133,
+                  startAt: 132,
+                  type: TokenType {
+                    name: "\$literal",
+                  },
+                  value: "b",
+                },
+              ],
+              endAt: 133,
+              startAt: 132,
+              type: TokenType {
+                name: "letter",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 134,
+                      startAt: 133,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "i",
+                    },
+                  ],
+                  endAt: 134,
+                  startAt: 133,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 134,
+              startAt: 133,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 135,
+                      startAt: 134,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "n",
+                    },
+                  ],
+                  endAt: 135,
+                  startAt: 134,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 135,
+              startAt: 134,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 136,
+                      startAt: 135,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "a",
+                    },
+                  ],
+                  endAt: 136,
+                  startAt: 135,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 136,
+              startAt: 135,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 137,
+                      startAt: 136,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "r",
+                    },
+                  ],
+                  endAt: 137,
+                  startAt: 136,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 137,
+              startAt: 136,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 138,
+                      startAt: 137,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "y",
+                    },
+                  ],
+                  endAt: 138,
+                  startAt: 137,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 138,
+              startAt: 137,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                LiteralTokenNode {
+                  endAt: 139,
+                  startAt: 138,
+                  type: TokenType {
+                    name: "\$literal",
+                  },
+                  value: "-",
+                },
+              ],
+              endAt: 139,
+              startAt: 138,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 140,
+                      startAt: 139,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "d",
+                    },
+                  ],
+                  endAt: 140,
+                  startAt: 139,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 140,
+              startAt: 139,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 141,
+                      startAt: 140,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "i",
+                    },
+                  ],
+                  endAt: 141,
+                  startAt: 140,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 141,
+              startAt: 140,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 142,
+                      startAt: 141,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "g",
+                    },
+                  ],
+                  endAt: 142,
+                  startAt: 141,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 142,
+              startAt: 141,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 143,
+                      startAt: 142,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "i",
+                    },
+                  ],
+                  endAt: 143,
+                  startAt: 142,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 143,
+              startAt: 142,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    LiteralTokenNode {
+                      endAt: 144,
+                      startAt: 143,
+                      type: TokenType {
+                        name: "\$literal",
+                      },
+                      value: "t",
+                    },
+                  ],
+                  endAt: 144,
+                  startAt: 143,
+                  type: TokenType {
+                    name: "letter",
+                  },
+                },
+              ],
+              endAt: 144,
+              startAt: 143,
+              type: TokenType {
+                name: "rule-char",
+              },
+            },
+          ],
+          endAt: 144,
+          startAt: 132,
+          type: TokenType {
+            name: "rule-name",
+          },
+        },
+        LiteralTokenNode {
+          endAt: 145,
+          startAt: 144,
+          type: TokenType {
+            name: "\$literal",
+          },
+          value: ">",
+        },
+        NamedTokenNode {
+          children: [
+            LiteralTokenNode {
+              endAt: 146,
+              startAt: 145,
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: " ",
+            },
+          ],
+          endAt: 146,
+          startAt: 145,
+          type: TokenType {
+            name: "opt-whitespace",
+          },
+        },
+        LiteralTokenNode {
+          endAt: 149,
+          startAt: 146,
+          type: TokenType {
+            name: "\$literal",
+          },
+          value: ":",
+        },
+        NamedTokenNode {
+          children: [
+            LiteralTokenNode {
+              endAt: 150,
+              startAt: 149,
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: " ",
+            },
+          ],
+          endAt: 150,
+          startAt: 149,
+          type: TokenType {
+            name: "opt-whitespace",
+          },
+        },
+        NamedTokenNode {
+          children: [
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    NamedTokenNode {
+                      children: [
+                        LiteralTokenNode {
+                          endAt: 151,
+                          startAt: 150,
+                          type: TokenType {
+                            name: "\$literal",
+                          },
+                          value: '"',
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                NamedTokenNode {
+                                  children: [
+                                    NamedTokenNode {
+                                      children: [
+                                        LiteralTokenNode {
+                                          endAt: 152,
+                                          startAt: 151,
+                                          type: TokenType {
+                                            name: "\$literal",
+                                          },
+                                          value: "0",
+                                        },
+                                      ],
+                                      endAt: 152,
+                                      startAt: 151,
+                                      type: TokenType {
+                                        name: "digit",
+                                      },
+                                    },
+                                  ],
+                                  endAt: 152,
+                                  startAt: 151,
+                                  type: TokenType {
+                                    name: "character",
+                                  },
+                                },
+                              ],
+                              endAt: 152,
+                              startAt: 151,
+                              type: TokenType {
+                                name: "character1",
+                              },
+                            },
+                          ],
+                          endAt: 152,
+                          startAt: 151,
+                          type: TokenType {
+                            name: "text1",
+                          },
+                        },
+                        LiteralTokenNode {
+                          endAt: 153,
+                          startAt: 152,
+                          type: TokenType {
+                            name: "\$literal",
+                          },
+                          value: '"',
+                        },
+                      ],
+                      endAt: 153,
+                      startAt: 150,
+                      type: TokenType {
+                        name: "literal",
+                      },
+                    },
+                  ],
+                  endAt: 153,
+                  startAt: 150,
+                  type: TokenType {
+                    name: "term",
+                  },
+                },
+              ],
+              endAt: 153,
+              startAt: 150,
+              type: TokenType {
+                name: "list",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                LiteralTokenNode {
+                  endAt: 154,
+                  startAt: 153,
+                  type: TokenType {
+                    name: "\$literal",
+                  },
+                  value: " ",
+                },
+              ],
+              endAt: 154,
+              startAt: 153,
+              type: TokenType {
+                name: "opt-whitespace",
+              },
+            },
+            LiteralTokenNode {
+              endAt: 155,
+              startAt: 154,
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: "|",
+            },
+            NamedTokenNode {
+              children: [
+                LiteralTokenNode {
+                  endAt: 156,
+                  startAt: 155,
+                  type: TokenType {
+                    name: "\$literal",
+                  },
+                  value: " ",
+                },
+              ],
+              endAt: 156,
+              startAt: 155,
+              type: TokenType {
+                name: "opt-whitespace",
+              },
+            },
+            NamedTokenNode {
+              children: [
+                NamedTokenNode {
+                  children: [
+                    NamedTokenNode {
+                      children: [
+                        LiteralTokenNode {
+                          endAt: 157,
+                          startAt: 156,
+                          type: TokenType {
+                            name: "\$literal",
+                          },
+                          value: '"',
+                        },
+                        NamedTokenNode {
+                          children: [
+                            NamedTokenNode {
+                              children: [
+                                NamedTokenNode {
+                                  children: [
+                                    NamedTokenNode {
+                                      children: [
+                                        LiteralTokenNode {
+                                          endAt: 158,
+                                          startAt: 157,
+                                          type: TokenType {
+                                            name: "\$literal",
+                                          },
+                                          value: "1",
+                                        },
+                                      ],
+                                      endAt: 158,
+                                      startAt: 157,
+                                      type: TokenType {
+                                        name: "digit",
+                                      },
+                                    },
+                                  ],
+                                  endAt: 158,
+                                  startAt: 157,
+                                  type: TokenType {
+                                    name: "character",
+                                  },
+                                },
+                              ],
+                              endAt: 158,
+                              startAt: 157,
+                              type: TokenType {
+                                name: "character1",
+                              },
+                            },
+                          ],
+                          endAt: 158,
+                          startAt: 157,
+                          type: TokenType {
+                            name: "text1",
+                          },
+                        },
+                        LiteralTokenNode {
+                          endAt: 159,
+                          startAt: 158,
+                          type: TokenType {
+                            name: "\$literal",
+                          },
+                          value: '"',
+                        },
+                      ],
+                      endAt: 159,
+                      startAt: 156,
+                      type: TokenType {
+                        name: "literal",
+                      },
+                    },
+                  ],
+                  endAt: 159,
+                  startAt: 156,
+                  type: TokenType {
+                    name: "term",
+                  },
+                },
+              ],
+              endAt: 159,
+              startAt: 156,
+              type: TokenType {
+                name: "list",
+              },
+            },
+          ],
+          endAt: 159,
+          startAt: 150,
+          type: TokenType {
+            name: "expression",
+          },
+        },
+        NamedTokenNode {
+          children: [
+            LiteralTokenNode {
+              endAt: 160,
+              startAt: 159,
+              type: TokenType {
+                name: "\$literal",
+              },
+              value: "
+",
+            },
+          ],
+          endAt: 160,
+          startAt: 159,
+          type: TokenType {
+            name: "line-end",
+          },
+        },
+      ],
+      endAt: 160,
+      startAt: 131,
+      type: TokenType {
+        name: "rule",
+      },
+    },
+  ],
+  endAt: 160,
+  startAt: 0,
+  type: TokenType {
+    name: "syntax",
+  },
+}
+`;

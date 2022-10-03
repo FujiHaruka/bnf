@@ -36,7 +36,7 @@ export function flattenRecursiveNodes(node: TokenNode): TokenNode {
     }
   }
 
-  node.children.forEach(flattenRecursiveNodes)
+  node.children.forEach(flattenRecursiveNodes);
 
   return node;
 }

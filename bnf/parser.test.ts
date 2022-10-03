@@ -2,12 +2,12 @@ import {
   assert,
   assertObjectMatch,
   assertSnapshot,
-  assertThrows,
   describe,
   it,
+  makeloc,
+  posix,
 } from "../deps-test.ts";
-import { cleanupTempTokenNodes } from "./combinators/cleanupTempTokenNodes.ts";
-import { flattenRecursiveNodes } from "./combinators/flattenRecursiveNodes.ts";
+import { cleanNode } from "./nodes/cleanNode.ts";
 import { NamedTokenParser } from "./combinators/types.ts";
 import { parse, Parser } from "./parser.ts";
 
@@ -75,9 +75,6 @@ describe("Parsers", () => {
       children: [{
         value: '"',
       }, {
-        // Empty
-        type: "text1",
-      }, {
         value: '"',
       }],
     }],
@@ -128,7 +125,7 @@ describe("Parsers", () => {
     [Parser["list"], "<term> <opt-whitespace> <list>", {
       type: "list",
       startAt: 0,
-      endAt: 30
+      endAt: 30,
     }],
     // <line-end> ::= <opt-whitespace> <EOL> | <line-end> <line-end>
     [Parser["line-end"], " \n\n  \n", {
@@ -141,34 +138,52 @@ describe("Parsers", () => {
       startAt: 0,
       endAt: 1,
     }],
-    // <rule> ::= <opt-whitespace> "<" <rule-name> ">" <opt-whitespace> "::=" <opt-whitespace> <expression> <line-end>
-    [Parser["rule"], '<rule> ::= <opt-whitespace> "<" <rule-name> ">" <opt-whitespace> "::=" <opt-whitespace> <expression> <line-end>\n', {
+    // <opt-whitespace> ::= " " <opt-whitespace> | ""
+    [Parser["opt-whitespace"], " ", {
+      type: "opt-whitespace",
       startAt: 0,
-      endAt: 112,
-    }]
+      endAt: 1,
+      children: [{
+        value: " ",
+      }],
+    }],
+    // <rule> ::= <opt-whitespace> "<" <rule-name> ">" <opt-whitespace> "::=" <opt-whitespace> <expression> <line-end>
+    [
+      Parser["rule"],
+      '<rule> ::= <opt-whitespace> "<" <rule-name> ">" <opt-whitespace> "::=" <opt-whitespace> <expression> <line-end>\n',
+      {
+        startAt: 0,
+        endAt: 112,
+      },
+    ],
   ];
 
   tests.forEach(([parse, text, expected]) => {
     it(`${parse.name} parses \`${text.replaceAll("\n", "\\n")}\``, () => {
       const result = parse(text, 0)
-        .map(cleanupTempTokenNodes)
-        .map(flattenRecursiveNodes);
+        .map(cleanNode);
+      if (parse.name === "opt-whitespace") {
+        console.log(result.unwrap().toJSON());
+      }
       assert(result.isOk());
       assertObjectMatch(result.unwrap().toJSON(), expected);
     });
   });
 });
 
-const testsSuccess: string[] = [];
-testsSuccess.forEach((text) => {
-  Deno.test(`parse / success "${text}"`, (t) => {
-    assertSnapshot(t, parse(text));
-  });
-});
+describe(parse.name, () => {
+  const fixtures = [
+    "binary_number.bnf",
+    // "bnf.bnf",
+  ];
 
-const testsFailure: string[] = [];
-testsFailure.forEach((text) => {
-  Deno.test(`parse / failure "${text}"`, () => {
-    assertThrows(() => parse(text));
+  fixtures.forEach((fixture) => {
+    Deno.test(`parse / success with ${fixture}`, async (t) => {
+      const { __dirname } = makeloc(import.meta);
+      const filepath = posix.join(__dirname, "__fixtures__", fixture);
+      const bnf = Deno.readTextFileSync(filepath);
+      await assertSnapshot(t, parse(bnf));
+      // Deno.writeTextFileSync(`${fixture}.json`, JSON.stringify(parse(bnf), null, 2))
+    });
   });
 });
