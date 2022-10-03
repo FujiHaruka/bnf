@@ -124,16 +124,35 @@ describe("Parsers", () => {
         }],
       }],
     }],
+    // <list> ::= <term> | <term> <opt-whitespace> <list>
+    [Parser["list"], "<term> <opt-whitespace> <list>", {
+      type: "list",
+      startAt: 0,
+      endAt: 30
+    }],
+    // <line-end> ::= <opt-whitespace> <EOL> | <line-end> <line-end>
+    [Parser["line-end"], " \n\n  \n", {
+      type: "line-end",
+      startAt: 0,
+      endAt: 6,
+    }],
+    [Parser["line-end"], "\n", {
+      type: "line-end",
+      startAt: 0,
+      endAt: 1,
+    }],
+    // <rule> ::= <opt-whitespace> "<" <rule-name> ">" <opt-whitespace> "::=" <opt-whitespace> <expression> <line-end>
+    [Parser["rule"], '<rule> ::= <opt-whitespace> "<" <rule-name> ">" <opt-whitespace> "::=" <opt-whitespace> <expression> <line-end>\n', {
+      startAt: 0,
+      endAt: 112,
+    }]
   ];
 
   tests.forEach(([parse, text, expected]) => {
-    it(`${parse.name} parses ${text}`, () => {
+    it(`${parse.name} parses \`${text.replaceAll("\n", "\\n")}\``, () => {
       const result = parse(text, 0)
         .map(cleanupTempTokenNodes)
         .map(flattenRecursiveNodes);
-      // if (parse.name === "term") {
-      //   console.log(JSON.stringify(result.unwrap(), null, 2))
-      // }
       assert(result.isOk());
       assertObjectMatch(result.unwrap().toJSON(), expected);
     });
