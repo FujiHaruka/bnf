@@ -34,7 +34,7 @@ describe(literalTokenParser.name, () => {
     assertEquals(
       parse("__#$%__", 2).unwrap(),
       new LiteralTokenNode({
-        value: "#",
+        value: "#$%",
         startAt: 2,
         endAt: 5,
       }),

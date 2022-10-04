@@ -37,10 +37,12 @@ export function literalTokenParser(value: string) {
       );
     }
 
+    const startAt = position
+    const endAt = position + value.length
     const node = new LiteralTokenNode({
-      value: text.charAt(position),
-      startAt: position,
-      endAt: position + value.length,
+      value: text.slice(startAt, endAt),
+      startAt,
+      endAt,
     });
     return Result.Ok(node);
   };
