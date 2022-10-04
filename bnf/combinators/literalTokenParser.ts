@@ -37,8 +37,8 @@ export function literalTokenParser(value: string) {
       );
     }
 
-    const startAt = position
-    const endAt = position + value.length
+    const startAt = position;
+    const endAt = position + value.length;
     const node = new LiteralTokenNode({
       value: text.slice(startAt, endAt),
       startAt,

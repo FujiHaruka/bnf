@@ -7,6 +7,7 @@ import { repeat } from "./combinators/repeat.ts";
 import { NamedTokenNode, TempTokenType, TokenType } from "./token.ts";
 import { UnexpectedTokenError } from "./utils/errors.ts";
 import { Result } from "./utils/Result.ts";
+import { literalOr } from "./combinators/literalOr.ts";
 
 export const RuleNames = [
   "syntax",
@@ -190,7 +191,7 @@ export const Parser = {
    * <letter> ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" | "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
    */
   "letter"(text: string, position: number): Result<NamedTokenNode> {
-    return or(
+    return literalOr(
       TokenTypes["letter"],
       [
         "A",
@@ -245,14 +246,14 @@ export const Parser = {
         "x",
         "y",
         "z",
-      ].map((char) => literalTokenParser(char)),
+      ],
     )(text, position);
   },
   /**
    * <digit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
    */
   "digit"(text: string, position: number): Result<NamedTokenNode> {
-    return or(
+    return literalOr(
       TokenTypes["digit"],
       [
         "0",
@@ -265,14 +266,14 @@ export const Parser = {
         "7",
         "8",
         "9",
-      ].map((char) => literalTokenParser(char)),
+      ],
     )(text, position);
   },
   /**
    * <symbol> ::=  "|" | " " | "!" | "#" | "$" | "%" | "&" | "(" | ")" | "*" | "+" | "," | "-" | "." | "/" | ":" | ";" | ">" | "=" | "<" | "?" | "@" | "[" | "\" | "]" | "^" | "_" | "`" | "{" | "}" | "~"
    */
   "symbol"(text: string, position: number): Result<NamedTokenNode> {
-    return or(
+    return literalOr(
       TokenTypes["symbol"],
       [
         "|",
@@ -306,7 +307,7 @@ export const Parser = {
         "{",
         "}",
         "~",
-      ].map((char) => literalTokenParser(char)),
+      ],
     )(text, position);
   },
   /**

@@ -162,9 +162,9 @@ describe("Parsers", () => {
     it(`${parse.name} parses \`${text.replaceAll("\n", "\\n")}\``, () => {
       const result = parse(text, 0)
         .map(cleanNode);
-      if (parse.name === "opt-whitespace") {
-        console.log(result.unwrap().toJSON());
-      }
+      // if (parse.name === "opt-whitespace") {
+      //   console.log(result.unwrap().toJSON());
+      // }
       assert(result.isOk());
       assertObjectMatch(result.unwrap().toJSON(), expected);
     });

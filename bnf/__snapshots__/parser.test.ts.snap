@@ -373,7 +373,7 @@ NamedTokenNode {
           type: TokenType {
             name: "\$literal",
           },
-          value: ":",
+          value: "::=",
         },
         NamedTokenNode {
           children: [
@@ -1737,7 +1737,7 @@ NamedTokenNode {
           type: TokenType {
             name: "\$literal",
           },
-          value: ":",
+          value: "::=",
         },
         NamedTokenNode {
           children: [
@@ -3273,7 +3273,7 @@ NamedTokenNode {
           type: TokenType {
             name: "\$literal",
           },
-          value: ":",
+          value: "::=",
         },
         NamedTokenNode {
           children: [
