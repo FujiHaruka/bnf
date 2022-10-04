@@ -2,7 +2,6 @@ import { concat } from "./combinators/concat.ts";
 import { cleanNode } from "./nodes/cleanNode.ts";
 import { literalTokenParser } from "./combinators/literalTokenParser.ts";
 import { or } from "./combinators/or.ts";
-import { parseEmptyToken } from "./combinators/parseEmptyToken.ts";
 import { repeat } from "./combinators/repeat.ts";
 import { NamedTokenNode, TempTokenType, TokenType } from "./token.ts";
 import { UnexpectedTokenError } from "./utils/errors.ts";
@@ -40,15 +39,13 @@ export const TokenTypes = Object.fromEntries(RuleNames
 export const Parser = {
   /**
    * <syntax> ::= <rule> | <rule> <syntax>
+   * equivalent to
+   * <syntax> ::= <rule>+
    */
   "syntax"(text: string, position: number): Result<NamedTokenNode> {
-    return or(TokenTypes["syntax"], [
-      Parser["rule"],
-      concat(TempTokenType, [
-        Parser["rule"],
-        Parser["syntax"],
-      ]),
-    ])(text, position);
+    return repeat(TokenTypes["syntax"], Parser["rule"], {
+      minimumRepeat: 1,
+    })(text, position);
   },
   /**
    * <rule> ::= <opt-whitespace> "<" <rule-name> ">" <opt-whitespace> "::=" <opt-whitespace> <expression> <line-end>
@@ -68,15 +65,13 @@ export const Parser = {
   },
   /**
    * <opt-whitespace> ::= " " <opt-whitespace> | ""
+   * equivalent to
+   * <opt-whitespace> ::= " "*
    */
   "opt-whitespace"(text: string, position: number): Result<NamedTokenNode> {
-    return or(TokenTypes["opt-whitespace"], [
-      concat(TempTokenType, [
-        literalTokenParser(" "),
-        Parser["opt-whitespace"],
-      ]),
-      parseEmptyToken,
-    ])(text, position);
+    return repeat(TokenTypes["opt-whitespace"], literalTokenParser(" "), {
+      minimumRepeat: 0,
+    })(text, position);
   },
   /**
    * <expression> ::= <list> | <list> <opt-whitespace> "|" <opt-whitespace> <expression>
@@ -154,27 +149,23 @@ export const Parser = {
   },
   /**
    * <text1> ::= "" | <character1> <text1>
+   * equivalent to
+   * <text1> ::= <character1>*
    */
   "text1"(text: string, position: number): Result<NamedTokenNode> {
-    return or(TokenTypes["text1"], [
-      parseEmptyToken,
-      concat(TempTokenType, [
-        Parser["character1"],
-        Parser["text1"],
-      ]),
-    ])(text, position);
+    return repeat(TokenTypes["text1"], Parser["character1"], {
+      minimumRepeat: 0,
+    })(text, position);
   },
   /**
    * <text2> ::= '' | <character2> <text2>
+   * equivalent to
+   * <text2> ::= <character2>*
    */
   "text2"(text: string, position: number): Result<NamedTokenNode> {
-    return or(TokenTypes["text2"], [
-      parseEmptyToken,
-      concat(TempTokenType, [
-        Parser["character2"],
-        Parser["text2"],
-      ]),
-    ])(text, position);
+    return repeat(TokenTypes["text2"], Parser["character2"], {
+      minimumRepeat: 0,
+    })(text, position);
   },
   /**
    * <character> ::= <letter> | <digit> | <symbol>
