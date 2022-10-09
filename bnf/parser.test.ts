@@ -174,7 +174,7 @@ describe("Parsers", () => {
 describe(parse.name, () => {
   const fixtures = [
     "binary_number.bnf",
-    // "bnf.bnf",
+    "bnf.bnf",
   ];
 
   fixtures.forEach((fixture) => {
@@ -182,8 +182,8 @@ describe(parse.name, () => {
       const { __dirname } = makeloc(import.meta);
       const filepath = posix.join(__dirname, "__fixtures__", fixture);
       const bnf = Deno.readTextFileSync(filepath);
-      await assertSnapshot(t, parse(bnf));
-      // Deno.writeTextFileSync(`${fixture}.json`, JSON.stringify(parse(bnf), null, 2))
+      const node = parse(bnf);
+      await assertSnapshot(t, node);
     });
   });
 });
